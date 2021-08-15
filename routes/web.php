@@ -5,8 +5,10 @@ use App\Http\Controllers\DashboardControllers;
 use App\Http\Controllers\DataPerusahaanControllers;
 use App\Http\Controllers\IntroControllers;
 use App\Http\Controllers\PartnerControllers;
+use App\Http\Controllers\PopupControllers;
 use App\Http\Controllers\SliderImageControllers;
 use App\Http\Controllers\TestimoniControllers;
+use App\Http\Controllers\web\allControllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,17 +22,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('web.index');
-});
+
+// WEB
+Route::get('/', [allControllers::class,'index'])->name('home');
 
 
 
-//AUTH Manual 
+
+
+Route::prefix('/cms')->group(function () {
+    //AUTH Manual 
 Route::get('/login', [AuthControllers::class,'index'])->name('login');
 Route::post('/login',[AuthControllers::class,'create'])->name('auth_login');
 
-Route::prefix('/cms')->group(function () {
     Route::get('/dashboard',[DashboardControllers::class,'index'])->name('dashboard');
 
 
@@ -54,7 +58,6 @@ Route::prefix('/cms')->group(function () {
     Route::post('/edit/partner/{id}',[PartnerControllers::class,'update'])->name('edit_partner');
     Route::get('/delete/partner/{id}',[PartnerControllers::class,'destroy'])->name('delete_partner');
 
-    //Produk
 
     //Testimoni FIX
     Route::get('/testimoni',[TestimoniControllers::class,'index'])->name('testimoni');
@@ -62,6 +65,11 @@ Route::prefix('/cms')->group(function () {
     Route::get('/preview/testimoni/{id}',[TestimoniControllers::class,'show'])->name('preview_testimoni');
     Route::post('/edit/testimoni/{id}',[TestimoniControllers::class,'update'])->name('edit_testimoni');
     Route::get('/delete/testimoni/{id}',[TestimoniControllers::class,'destroy'])->name('delete_testimoni');
+
+    // Pop Up FIX
+    Route::get('/popup',[PopupControllers::class,'index'])->name('popup');
+    Route::post('/create/popup',[PopupControllers::class,'store'])->name('create_popup');
+    Route::post('/edit/popup/{id}',[PopupControllers::class,'update'])->name('edit_popup');
 
     //Data Perusahaan FIX
     Route::get('/data-perusahaan',[DataPerusahaanControllers::class,'index'])->name('data_perusahaan');

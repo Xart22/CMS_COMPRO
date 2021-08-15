@@ -69,8 +69,8 @@ class DataPerusahaanControllers extends Controller
             'email'=>$req->email,
             'hari_operasional'=>$req->hari,
             'jam_operasional'=>$req->jam,
-            'logo_small'=>$logo_small,
-            'logo_big'=>$logo_big
+            'logo_small'=>$this->PATH_FILE_DB.$logo_small,
+            'logo_big'=>$this->PATH_FILE_DB.$logo_big
         ]);
         Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
         Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
@@ -108,7 +108,6 @@ class DataPerusahaanControllers extends Controller
      */
     public function update(Request $req, $id)
     {
-        dd($req->file());
         $small = $req->file('logo_small');
         $cek = getimagesize($small);
         $big = $req->file('logo_big');
@@ -135,8 +134,8 @@ class DataPerusahaanControllers extends Controller
             'email'=>$req->email,
             'hari_operasional'=>$req->hari,
             'jam_operasional'=>$req->jam,
-            'logo_small'=>$logo_small,
-            'logo_big'=>$logo_big
+            'logo_small'=>$this->PATH_FILE_DB.$logo_small,
+            'logo_big'=>$this->PATH_FILE_DB.$logo_big
         ]);
         Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
         Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);

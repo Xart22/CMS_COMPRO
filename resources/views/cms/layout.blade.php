@@ -146,7 +146,7 @@
                                                 >
                                             </li>
                                             <li class="">
-                                                <a href="index3.html"
+                                                <a href="{{ route('popup') }}"
                                                     >Pop Up News</a
                                                 >
                                             </li>

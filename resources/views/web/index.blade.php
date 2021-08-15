@@ -31,52 +31,18 @@
 <header class="site-header" id="header">
     <nav class="navbar navbar-expand-lg transparent-bg darkcolor static-nav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo-default" style="width: 200px;">
-                <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo-scrolled">
+            <a class="navbar-brand" href="{{route('home')}}">
+                <img src="/sumaju/storage/app/{{ $dataPerusahaan->logo_small}}" alt="logo" class="logo-default" style="width: 200px;">
+                <img src="/sumaju/storage/app/{{ $dataPerusahaan->logo_big}}" alt="logo" class="logo-scrolled">
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown static">
-                        <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a>
-                        <ul class="dropdown-menu megamenu">
-                            <li>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <a class="dropdown-item" href="index.html">Standard Version</a>
-                                            <a class="dropdown-item" href="index-creative-agency.html">Creative Agency</a>
-                                            <a class="dropdown-item active" href="index-light.html">Classic Light</a>
-                                            <a class="dropdown-item" href="index-video.html">Video Background</a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <a class="dropdown-item" href="index-modern-agency.html">Modern Agency</a>
-                                            <a class="dropdown-item" href="index-classic-startup.html">Classic Startup</a>
-                                            <a class="dropdown-item" href="index-flat.html">Flat Version</a>
-                                            <a class="dropdown-item" href="index-innovative.html">Innovative Layout</a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <a class="dropdown-item" href="index-one-page.html">One Page Layout</a>
-                                            <a class="dropdown-item" href="index-center-logo.html">Center Logo</a>
-                                            <a class="dropdown-item" href="index-bottom-nav.html">Bottom Nav</a>
-                                            <a class="dropdown-item" href="index-gray.html">Minimal Gray</a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <a class="dropdown-item" href="index-parallax.html">Parallax Version</a>
-                                            <a class="dropdown-item" href="index-interactive-classic.html">Interactive Classic</a>
-                                            <a class="dropdown-item" href="index-design-studio.html">Design Studio</a>
-                                            <a class="dropdown-item" href="index-particles.html">Interactive Particles</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
+                    
                     <li class="nav-item dropdown static">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Pages </a>
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Produk </a>
                         <ul class="dropdown-menu megamenu">
                             <li>
                                 <div class="container">
@@ -117,16 +83,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown position-relative">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="blog-1.html">Blog Layout 1</a>
-                            <a class="dropdown-item" href="blog-2.html">Blog Layout 2</a>
-                            <a class="dropdown-item" href="blog-detail.html">Blog Layout 3</a>
-                        </div>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallery.html">Gallery</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
@@ -147,71 +105,12 @@
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
-                            Home <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div id="sideNavPages1" class="collapse sideNavPages">
-                            <ul class="navbar-nav mt-2">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Standard Version</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-creative-agency.html">Creative Agency</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="index-light.html">Classic Light</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-video.html">Video Background</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-modern-agency.html">Modern Agency</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-classic-startup.html">Classic Startup</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-flat.html">Flat Version</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-innovative.html">Innovative Layout</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-one-page.html">One Page Layout</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-center-logo.html">Center Logo</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-bottom-nav.html">Bottom Nav</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-gray.html">Minimal Gray</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-parallax.html">Parallax Version</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-interactive-classic.html">Interactive Classic</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-design-studio.html">Design Studio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index-particles.html">Interactive Particles</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a class="nav-link" href="about.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.html">Gallery</a>
-                    </li>
+                    <!-- Produk -->
                     <li class="nav-item">
                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages">
-                            Pages <i class="fas fa-chevron-down"></i>
+                            Produk <i class="fas fa-chevron-down"></i>
                         </a>
                         <div id="sideNavPages" class="collapse sideNavPages">
                             <ul class="navbar-nav mt-2">
@@ -288,22 +187,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
-                            Blogs <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div id="sideNavPages2" class="collapse sideNavPages">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="blog-1.html">Blog 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="blog-2.html">Blog 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="blog-detail.html">Blog Details</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a class="nav-link" href="gallery.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
@@ -316,7 +200,7 @@
                     <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
                     <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
                 </ul>
-                <p class="whitecolor">&copy; <span id="year"></span> Trax. Made With Love by ThemesIndustry</p>
+                <p class="whitecolor">&copy; <span id="year"></span>  www.alurgerak.id</p>
             </div>
         </div>
     </div>
@@ -330,10 +214,10 @@
         <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
         <div id="rev_main" class="rev_slider fullwidthabanner" data-version="5.4.1">
             <ul>
-                <!-- SLIDE 1 -->
+                @foreach($slider as $slid)
                 <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-easein="Power100.easeInOut" data-easeout="Power100.easeInOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="01">
                     <!-- MAIN IMAGE -->
-                    <img src="{{ asset('assets/images/compro3_1920x1280.jpg')}}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    <img src="/sumaju/storage/app/{{ $slid->img}}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -342,7 +226,7 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="1000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-normal text-center">Welcome</h1>
+                        <h1 class="text-dark text-capitalize font-normal text-center">{{ $slid->text1}}</h1>
                     </div>
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption tp-resizeme"
@@ -352,7 +236,7 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="1000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-bold text-center">SEMAJU ELANG PUTRA</h1>
+                        <h1 class="text-dark text-capitalize font-bold text-center">{{ $slid->text2}}</h1>
                     </div>
                     <!-- LAYER NR. 3 -->
                     <div class="tp-caption tp-resizeme"
@@ -362,7 +246,7 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="1500"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-xlight text-center">Since 2013</h1>
+                        <h1 class="text-dark text-capitalize font-xlight text-center">{{ $slid->text3}}</h1>
                     </div>
                     <!-- LAYER NR. 4 -->
                     <div class="tp-caption tp-resizeme"
@@ -372,99 +256,10 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="2000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h4 class="text-dark text-capitalize font-normal text-center">Supplying CENTAC part 100% OEM compatible and meet or exceed OEM spesifications</h4>
+                        <h4 class="text-dark text-capitalize font-normal text-center">{{ $slid->text4}}</h4>
                     </div>
                 </li>
-                <!-- SLIDE 2 -->
-                <li data-index="rs-02" data-transition="fade" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="02">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{ asset('assets/images/compro5_1920x1280.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['-130','-130','-110','-80']"
-                         data-width="none" data-height="none" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="1000"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-xlight text-center">SEMAJU</h1>
-                    </div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-50','-20']"
-                         data-width="none" data-height="none" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="1000"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-bold text-center">Reduce Cost is OurFocus, Quality is Our Warranty</h1>
-                    </div>
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['-10','-10','10','40']"
-                         data-width="none" data-height="none" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="1500"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-xlight text-center">Reduce Maintenance Cost With Good Quality Parts</h1>
-                    </div>
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['40','40','60','90']"
-                         data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="2000"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h4 class="text-dark font-light text-center">~</h4>
-                    </div>
-                </li>
-                <!-- SLIDE 3 -->
-                <li data-index="rs-03" data-transition="fade" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="03">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{ asset('assets/images/banner-light1-3.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['-130','-130','-110','-80']"
-                         data-width="none" data-height="none" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="1000"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-xlight text-center">We Are Here</h1>
-                    </div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-50','-20']"
-                         data-width="none" data-height="none" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="1000"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-bold text-center">For Your Needs</h1>
-                    </div>
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['-10','-10','10','40']"
-                         data-width="none" data-height="none" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="1500"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-dark text-capitalize font-xlight text-center">SEMAJU</h1>
-                    </div>
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption tp-resizeme"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['middle','middle','middle','middle']" data-voffset="['40','40','60','90']"
-                         data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
-                         data-textAlign="['center','center','center','center']"
-                         data-responsive_offset="on" data-start="2000"
-                         data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h4 class="text-dark font-light text-center">Help Your Business</h4>
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -484,14 +279,14 @@
                 <div class="item">
                     <div class="service-box">
                         <span class="bottom25"><i class="fa fa-phone"></i></span>
-                        <h4 class="bottom10"><a href="javascript:void(0)">(+6222) 875 25015</a></h4>
+                        <h4 class="bottom10"><a href="javascript:void(0)">{{$dataPerusahaan->no_telp}}</a></h4>
                         <p>We will Help You</p>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service-box">
                         <span class="bottom25"><i class="fa fa-envelope"></i></span>
-                        <h4 class="bottom10"><a href="javascript:void(0)">info@semaju.com</a></h4>
+                        <h4 class="bottom10"><a href="javascript:void(0)">{{$dataPerusahaan->email}}</a></h4>
                         <p>Email</p>
                     </div>
                 </div>
@@ -499,7 +294,7 @@
                     <div class="service-box">
                         <span class="bottom25"><i class="fa fa-home"></i></span>
                         <h4 class="bottom10"><a href="javascript:void(0)">Komplek Adipura IV</a></h4>
-                        <p>Jl. Pinus IX No.51 RT.005/008 Bandung Indonesia</p>
+                        <p>{{$dataPerusahaan->alamat}}</p>
                     </div>
                 </div>
             </div>
@@ -513,11 +308,11 @@
         <div class="row d-flex align-items-center">
             <div class="col-lg-6 col-md-7 col-sm-7 text-sm-left text-center wow fadeInLeft" data-wow-delay="100ms">
                 <div class="heading-title mb-6">
-                    <h2 class="darkcolor font-normal bottom30"><span class="defaultcolor">PT. SEMAJU ELANG PUTRA </span> Background</h2>
+                    <h2 class="darkcolor font-normal bottom30"><span class="defaultcolor">{{$dataPerusahaan->nm_perusahaan}} </span> Background</h2>
                 </div>
-                <p class="bottom35">PT. Semaju Elang Putra (SEP) was founded in end of 2013 and was incorporated in the state of Bandung as basic compressor population in industries. Our Company beginning was based on the principle of superior parts replacement for develope air quality for air compressors</p>
-                <p class="bottom35">The companie’s was starting with helped one of customer to supplied Cooler CENTAC with high quality performance and more then 30% saving cost from other supplier, started from that, we focus with our motto “Reduce Cost is Our Focus, Quality is Our Warranty“ it words has appriciated by customer to help themselves from dependence from distributor of brand compressors.</p>
-                <p class="bottom35">Consumable part is one of costly from compressor, all our customers agreed about that and hope to whom can help reduce the cost while consistence to up hold the princip of quality is our warranty, thats right PT.SEMAJU ELANG PUTRA has coming given solution for customer.</p>
+                <p class="bottom35">{{$intro->paragraf_1}}</p>
+                <p class="bottom35">{{$intro->paragraf_2}}</p>
+                <p class="bottom35">{{$intro->paragraf_3}}</p>
               
             </div>
             <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-5 wow fadeInRight" data-wow-delay="100ms">
@@ -539,32 +334,13 @@
         </div>
         <div class="row">
             <ul class="process-wrapp">
+                @foreach($partner as $part)
                 <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="http://semaju.com/assets/img/BGRotating.jpg" width="150" class="rounded-circle" alt="" srcset="">
-                    <p class="fontbold bottom25"><h4>IR CENTACT</h4></p>
-                    <p class="mt-n2 mt-sm-0">Kami dapat men-supply kebutuhan spare parts CENTAC Impeller, Diffuser, Pinion, Thurst Bearing, Collar Thurst, Balancing Rotor Assy, Probe, Thermostatic Valve dan lain-lain.</p>
+                    <img src="/sumaju/storage/app/{{$part->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
+                    <p class="fontbold bottom25"><h4>{{$part->nm_partner}}</h4></p>
+                    <p class="mt-n2 mt-sm-0">{{$part->desc}}</p>
                 </li>
-                <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="http://semaju.com/assets/img/BGRotating.jpg" width="150" class="rounded-circle" alt="" srcset="">
-                    <p class="fontbold bottom25"><h4>IR CENTACT</h4></p>
-                    <p class="mt-n2 mt-sm-0">Kami dapat men-supply kebutuhan spare parts CENTAC Impeller, Diffuser, Pinion, Thurst Bearing, Collar Thurst, Balancing Rotor Assy, Probe, Thermostatic Valve dan lain-lain.</p>
-                </li>
-                <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="http://semaju.com/assets/img/BGRotating.jpg" width="150" class="rounded-circle" alt="" srcset="">
-                    <p class="fontbold bottom25"><h4>IR CENTACT</h4></p>
-                    <p class="mt-n2 mt-sm-0">Kami dapat men-supply kebutuhan spare parts CENTAC Impeller, Diffuser, Pinion, Thurst Bearing, Collar Thurst, Balancing Rotor Assy, Probe, Thermostatic Valve dan lain-lain.</p>
-                </li>
-                <li class="whitecolor wow fadeIn" data-wow-delay="400ms">
-                    <img src="http://semaju.com/assets/img/BGRotating.jpg" width="150" class="rounded-circle" alt="" srcset="">
-                    <p class="fontbold bottom25"><h4>KAISHAN</h4></p>
-                    <p class="mt-n2 mt-sm-0">Kami adalah Distributor Resmi KAISHAN Air Compressor. Yang dapat menyediakan unit baru, spare parts maupun service. Untuk type unit Kaitec Series, Kaitain Series, LG Series, LGX Series, PM Variable Frequency dan Centrifugal Air Compressors.</p>
-                </li>
-                <li class="whitecolor wow fadeIn" data-wow-delay="500ms">
-                    <img src="http://semaju.com/assets/img/BGRotating.jpg" width="150" class="rounded-circle" alt="" srcset="">
-                    <p class="fontbold bottom25"><h4>Z-Technique</h4></p>
-                    <p class="mt-n2 mt-sm-0">NON Refurbished Air End untuk Atlas Copco Z Series Air Compressors. Produk dari AirHire adalah alternative untuk penggantian LP dan HP Element yang harganya sangat tinggi.</p>
-                </li>
-                
+                @endforeach
             </ul>
         </div>
     </div>
@@ -755,81 +531,29 @@
     <div class="container">
         <div class="owl-carousel" id="testimonial-slider">
             <!--item 1-->
+            @foreach($testimoni as $testi)
             <div class="item testi-box">
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-12 text-center">
                         <div class="testimonial-round d-inline-block">
-                            <img src="{{ asset('assets/images/testimonial-1.jpg')}}" alt="">
+                            <img src="/sumaju/storage/app/{{$testi->img}}" alt="">
                         </div>
-                        <h4 class="defaultcolor font-light top15"><a href="#.">John Smith</a></h4>
-                        <p>UPWORK, New York</p>
+                        <h4 class="defaultcolor font-light top15"><a href="#.">{{$testi->nm}}</a></h4>
+                        <p>{{$testi->negara}}</p>
                     </div>
                     <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1 text-lg-left text-center">
-                        <p class="bottom15 top90">We have a number of different teams within our agency that specialise in different areas of business so you can be sure that you won’t receive a generic service and although we boast a years and years of service.</p>
+                        <p class="bottom15 top90">{{$testi->text}}</p>
                         <span class="d-inline-block test-star">
-                                <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                                </span>
+                            @for ($i = 0; $i < $testi->star; $i++)
+
+                            <i class="fas fa-star"></i>
+
+                            @endfor
+                        </span>
                     </div>
                 </div>
             </div>
-            <!--item 2-->
-            <div class="item testi-box">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-12 text-center">
-                        <div class="testimonial-round d-inline-block">
-                            <img src="{{ asset('assets/images/testimonial-2.jpg')}}" alt="">
-                        </div>
-                        <h4 class="defaultcolor font-light top15"><a href="#.">Hayden Wood</a></h4>
-                        <p>FIVERR, Italy</p>
-                    </div>
-                    <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1 text-lg-left text-center">
-                        <p class="bottom15 top90">Trax’s customer testimonial page is another beauty. Its simple design focuses on videos and standout quotes from customers. This approach is clean, straightforward, text that can be overwhelming and easy to skip.</p>
-                        <span class="d-inline-block test-star">
-                                <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> <i class="far fa-star"></i>
-                                </span>
-                    </div>
-                </div>
-            </div>
-            <!--item 3-->
-            <div class="item testi-box">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-12 text-center">
-                        <div class="testimonial-round d-inline-block">
-                            <img src="{{ asset('assets/images/testimonial-3.jpg')}}" alt="">
-                        </div>
-                        <h4 class="defaultcolor font-light top15"><a href="#.">Kevin Miller</a></h4>
-                        <p>ENVATO, Australia</p>
-                    </div>
-                    <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1 text-lg-left text-center">
-                        <p class="bottom15 top90">Trax is a company that provides tools to help professional event planning and execution, and their customers are very happy folks! The thing I love about their customer testimonial page provides content formats.</p>
-                        <span class="d-inline-block test-star">
-                                <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                                </span>
-                    </div>
-                </div>
-            </div>
-            <!--item 4-->
-            <div class="item testi-box">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-12 text-center">
-                        <div class="testimonial-round d-inline-block">
-                            <img src="{{ asset('assets/images/testimonial-4.jpg')}}" alt="">
-                        </div>
-                        <h4 class="defaultcolor font-light top15"><a href="#.">Alina Johanson</a></h4>
-                        <p>INTEL, Sidney</p>
-                    </div>
-                    <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1 text-lg-left text-center">
-                        <p class="bottom15 top90">Startup Institute is a career accelerator that allows professionals to learn new skills, take their careers in a different direction, and pursue a career they are passionate about that have completed the program.</p>
-                        <span class="d-inline-block test-star">
-                                <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> <i class="far fa-star"></i>
-                                </span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -884,12 +608,11 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer_panel padding_bottom_half bottom20">
                     <a href="index.html" class="footer_logo bottom25"><img src="{{ asset('assets/images/logo-transparent.png')}}" alt="MegaOne"></a>
-                    <p class="whitecolor bottom25">KOMPLEK BANDUNG INTEN</p>
-                    <p class="whitecolor bottom25">Jl. Inten Raya No.1, Kec. Rancasari, Bandung 40292</p>
+                    <p class="whitecolor bottom25">{{$dataPerusahaan->alamat}}</p>
                     <div class="d-table w-100 address-item whitecolor bottom25">
                         <span class="d-table-cell align-middle"><i class="fas fa-mobile-alt"></i></span>
                         <p class="d-table-cell align-middle bottom0">
-                                +62 8199-8198-900 <a class="d-block" href="mailto:web@support.com">agung25th@semaju.com</a>
+                                {{$dataPerusahaan->no_telp}} <a class="d-block" href="mailto:{{$dataPerusahaan->email}}">{{$dataPerusahaan->email}}</a>
                         </p>
                     </div>
                     <ul class="social-icons white wow fadeInUp" data-wow-delay="100ms">
@@ -914,7 +637,7 @@
                 <div class="footer_panel padding_bottom_half bottom20 pl-0 pl-lg-5">
                     <h3 class="whitecolor bottom25">SUPPORT BY</h3>
                     <ul class="links">
-                        <li><a href="index.html">AirComp-Parts.com</a></li>
+                        <li><a href="https://aircomparts.com/">AirCompParts.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -923,9 +646,7 @@
                     <h3 class="whitecolor bottom25">Business hours</h3>
                     <p class="whitecolor bottom25">Our support available to help you</p>
                     <ul class="hours_links whitecolor">
-                        <li><span>Monday-Friday:</span> <span>8.00-17.00</span></li>
-                        <li><span>Saturday:</span> <span>09:00-21:00</span></li>
-                        <li><span>Calendar Events:</span> <span>8-Hour Shift</span></li>
+                        <li><span>{{$dataPerusahaan->hari_operasional}}</span> <span>{{$dataPerusahaan->jam_operasional}}</span></li>
                     </ul>
                 </div>
             </div>
@@ -1003,7 +724,7 @@ color:white;
 }
 </style><br />
 	<div class="popbox hide" id="popbox">	  <div aria-label='Close' class="pop-overlay" onclick='document.getElementById("popbox").style.display="none";removeClassonBody();'/>	  <div class="pop-content">		<a href="#" target="_blank" rel="noopener noreferrer" title="box"><br />
-		  <div class="popcontent">			<img src="https://2.bp.blogspot.com/-7F4VzqkZlPs/XM5pUu8SZQI/AAAAAAAAALA/JXUpgu3KsVsF9a0qhxEcHcRVdsvzY6PogCLcBGAs/s1600/20190505_113756.jpg" alt="banner" width="850" height="450"/><br />
+		  <div class="popcontent">			<img src="/sumaju/storage/app/{{$popup->img}}" alt="banner" width="850" height="450"/><br />
 		  </div>		</a><br />
 		<button aria-label='Close' class='popbox-close-button' onclick='document.getElementById("popbox").style.display="none";removeClassonBody();'>×</button><br />
 	  </div>	</div><script>
