@@ -97,7 +97,7 @@ class SliderImageControllers extends Controller
         
         if($cek[0] != 1920 && $cek[1] != 1280){
             return back()->with('modal','Size Resolution Should be
-            1920px x 1280px ')->withInput();
+            1920px x 1280px')->with('modalId',$id);
         }
         $nm = time().'_'. $img->getClientOriginalName();
          $data = SliderModel::find($id);

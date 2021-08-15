@@ -42,6 +42,11 @@
 @endsection @section('content')
 
 <div class="row">
+    @if(Session::get('success'))
+    <div class="alert alert-success w-25" role="alert">
+        {{Session::get('success')}}
+    </div>
+    @endif
     <div class="col-md-12 col-sm-12">
         <div class="x_panel">
             <div class="x_title">
@@ -71,15 +76,30 @@
                             class="col-form-label col-md-3 col-sm-3 label-align"
                             >Name Client <span class="required">*</span></label
                         >
+                        @if(Session::get('nm'))
+                        <div class="col-md-6 col-sm-6 bad">
+                            <input
+                                class="form-control"
+                                name="nm"
+                                required
+                                autocomplete="off"
+                                value="{{ old('nm') }}"
+                            />
+                            <div class="text-danger">
+                                {{Session::get('nm') }}
+                            </div>
+                        </div>
+                        @else
                         <div class="col-md-6 col-sm-6">
                             <input
                                 class="form-control"
                                 name="nm"
                                 required
                                 autocomplete="off"
+                                value="{{ old('nm') }}"
                             />
                         </div>
-                        <div class="alert">please put something here</div>
+                        @endif
                     </div>
                     <div class="field item form-group">
                         <label
@@ -92,6 +112,7 @@
                                 name="negara"
                                 required
                                 autocomplete="off"
+                                value="{{ old('negara') }}"
                             />
                         </div>
                         <div class="alert">please put something here</div>
@@ -107,7 +128,8 @@
                                 name="desc"
                                 style="height: 100px"
                                 required
-                            ></textarea>
+                                >{{ old("desc") }}</textarea
+                            >
                         </div>
                     </div>
                     <div class="field item form-group">
@@ -123,6 +145,7 @@
                                 name="star"
                                 required
                                 autocomplete="off"
+                                value="{{ old('star') }}"
                             />
                         </div>
                     </div>
@@ -131,6 +154,20 @@
                             class="col-form-label col-md-3 col-sm-3 label-align"
                             >Logo Client <span class="required">*</span></label
                         >
+                        @if(Session::get('fail'))
+                        <div class="col-md-6 col-sm-6 bad">
+                            <input
+                                class="form-control"
+                                type="file"
+                                name="img"
+                                required="required"
+                                accept="image/png, image/jpeg"
+                            />
+                            <div class="text-danger">
+                                {{Session::get('fail') }}
+                            </div>
+                        </div>
+                        @else
                         <div class="col-md-6 col-sm-6">
                             <input
                                 class="form-control"
@@ -143,6 +180,8 @@
                                 For Best Image Quality Resolution Should be
                                 200px x 200px
                             </div>
+
+                            @endif
                         </div>
                     </div>
                     <div class="ln_solid">
@@ -302,7 +341,7 @@
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="}"
+                                                            href="{{route('preview_testimoni',$testi->id)}}"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                         >
@@ -319,7 +358,7 @@
                                                                         fa
                                                                         fa-eye
                                                                     "
-                                                                    title="Priview"
+                                                                    title="Preview"
                                                                 ></i></button
                                                         ></a>
                                                         <button
@@ -330,7 +369,7 @@
                                                                 btn-warning
                                                             "
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal"
+                                                            data-bs-target="#edit{{$testi->id}}"
                                                         >
                                                             <i
                                                                 class="
@@ -339,196 +378,6 @@
                                                                 title="Edit"
                                                             ></i>
                                                         </button>
-                                                        <!-- Modal -->
-                                                        <div
-                                                            class="modal fade"
-                                                            id="exampleModal"
-                                                            tabindex="-1"
-                                                            aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true"
-                                                        >
-                                                            <div
-                                                                class="
-                                                                    modal-dialog
-                                                                    modal-dialog-centered
-                                                                    modal-xl
-                                                                "
-                                                            >
-                                                                <div
-                                                                    class="
-                                                                        modal-content
-                                                                    "
-                                                                >
-                                                                    <div
-                                                                        class="
-                                                                            modal-header
-                                                                        "
-                                                                    >
-                                                                        <h5
-                                                                            class="
-                                                                                modal-title
-                                                                            "
-                                                                            id="exampleModalLabel"
-                                                                        >
-                                                                            Edit
-                                                                            Testimoni
-                                                                        </h5>
-                                                                        <button
-                                                                            type="button"
-                                                                            class="
-                                                                                btn-close
-                                                                            "
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"
-                                                                        >
-                                                                            X
-                                                                        </button>
-                                                                    </div>
-                                                                    <form
-                                                                        action="{{route('edit_partner',$testi->id)}}"
-                                                                        method="post"
-                                                                        enctype="multipart/form-data"
-                                                                    >
-                                                                        @csrf
-                                                                        <div
-                                                                            class="
-                                                                                modal-body
-                                                                            "
-                                                                        >
-                                                                            <div
-                                                                                class="
-                                                                                    item
-                                                                                    form-group
-                                                                                "
-                                                                            >
-                                                                                <label
-                                                                                    class="
-                                                                                        col-form-label
-                                                                                        col-md-3
-                                                                                        col-sm-3
-                                                                                        label-align
-                                                                                    "
-                                                                                    for="first-name"
-                                                                                    >Name
-                                                                                    Client
-                                                                                </label>
-                                                                                <div
-                                                                                    class="
-                                                                                        col-md-6
-                                                                                        col-sm-6
-                                                                                    "
-                                                                                >
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        required="required"
-                                                                                        class="
-                                                                                            form-control
-                                                                                        "
-                                                                                        name="nm"
-                                                                                        autocomplete="off"
-                                                                                        value="{{$testi->nm}}"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                            <div
-                                                                                class="
-                                                                                    item
-                                                                                    form-group
-                                                                                "
-                                                                            >
-                                                                                <label
-                                                                                    class="
-                                                                                        col-form-label
-                                                                                        col-md-3
-                                                                                        col-sm-3
-                                                                                        label-align
-                                                                                    "
-                                                                                    for="first-name"
-                                                                                    >Country
-                                                                                </label>
-                                                                                <div
-                                                                                    class="
-                                                                                        col-md-6
-                                                                                        col-sm-6
-                                                                                    "
-                                                                                >
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        required="required"
-                                                                                        class="
-                                                                                            form-control
-                                                                                        "
-                                                                                        name="nm"
-                                                                                        autocomplete="off"
-                                                                                        value="{{$testi->negara}}"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div
-                                                                                class="
-                                                                                    item
-                                                                                    form-group
-                                                                                "
-                                                                            >
-                                                                                <label
-                                                                                    class="
-                                                                                        col-form-label
-                                                                                        col-md-3
-                                                                                        col-sm-3
-                                                                                        label-align
-                                                                                    "
-                                                                                    for="first-name"
-                                                                                    >Logo
-                                                                                    Client
-                                                                                </label>
-                                                                                <div
-                                                                                    class="
-                                                                                        col-md-6
-                                                                                        col-sm-6
-                                                                                    "
-                                                                                >
-                                                                                    <input
-                                                                                        type="file"
-                                                                                        required="required"
-                                                                                        class="
-                                                                                            form-control
-                                                                                        "
-                                                                                        name="logo"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="
-                                                                                modal-footer
-                                                                            "
-                                                                        >
-                                                                            <button
-                                                                                type="button"
-                                                                                class="
-                                                                                    btn
-                                                                                    btn-secondary
-                                                                                "
-                                                                                data-bs-dismiss="modal"
-                                                                            >
-                                                                                Close
-                                                                            </button>
-                                                                            <button
-                                                                                type="submit"
-                                                                                class="
-                                                                                    btn
-                                                                                    btn-primary
-                                                                                "
-                                                                            >
-                                                                                Save
-                                                                                changes
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <button
                                                             type="button"
                                                             class="
@@ -537,7 +386,7 @@
                                                                 btn-danger
                                                             "
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#deleteModal"
+                                                            data-bs-target="#delete{{$testi->id}}"
                                                         >
                                                             <i
                                                                 class="
@@ -546,90 +395,6 @@
                                                                 title="Delete"
                                                             ></i>
                                                         </button>
-                                                        <div
-                                                            class="modal fade"
-                                                            id="deleteModal"
-                                                            tabindex="-1"
-                                                            aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true"
-                                                        >
-                                                            <div
-                                                                class="
-                                                                    modal-dialog
-                                                                    modal-dialog-centered
-                                                                "
-                                                            >
-                                                                <div
-                                                                    class="
-                                                                        modal-content
-                                                                    "
-                                                                >
-                                                                    <div
-                                                                        class="
-                                                                            modal-header
-                                                                        "
-                                                                    >
-                                                                        <h5
-                                                                            class="
-                                                                                modal-title
-                                                                            "
-                                                                            id="exampleModalLabel"
-                                                                        >
-                                                                            Delete
-                                                                            Modal
-                                                                            {{$testi->position}}
-                                                                        </h5>
-                                                                        <button
-                                                                            type="button"
-                                                                            class="
-                                                                                btn-close
-                                                                            "
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"
-                                                                        >
-                                                                            X
-                                                                        </button>
-                                                                    </div>
-                                                                    <div
-                                                                        class="
-                                                                            modal-body
-                                                                        "
-                                                                    >
-                                                                        Are You
-                                                                        Sure ?
-                                                                    </div>
-                                                                    <div
-                                                                        class="
-                                                                            modal-footer
-                                                                        "
-                                                                    >
-                                                                        <button
-                                                                            type="button"
-                                                                            class="
-                                                                                btn
-                                                                                btn-secondary
-                                                                            "
-                                                                            data-bs-dismiss="modal"
-                                                                        >
-                                                                            Cancel
-                                                                        </button>
-                                                                        <a
-                                                                            href="{{route('delete_partner',$testi->id)}}"
-                                                                        >
-                                                                            <button
-                                                                                type="button"
-                                                                                class="
-                                                                                    btn
-                                                                                    btn-danger
-                                                                                "
-                                                                            >
-                                                                                Delete
-                                                                            </button></a
-                                                                        >
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -646,7 +411,214 @@
     </div>
 </div>
 
-@endsection @section('script')
+<!-- Modal Edit -->
+@foreach ($data as $e)
+<div
+    class="modal fade"
+    id="edit{{$e->id}}"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Edit Testimoni {{$e->nm}}
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                >
+                    X
+                </button>
+            </div>
+            <form
+                action="{{route('edit_testimoni',$e->id)}}"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                @csrf
+                <div class="modal-body">
+                    <div class="item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            for="first-name"
+                            >Name Client
+                        </label>
+                        @if(Session::get('nm_update'))
+                        <div class="col-md-6 col-sm-6 bad">
+                            <input
+                                type="text"
+                                required="required"
+                                class="form-control"
+                                name="nm"
+                                autocomplete="off"
+                                value="{{ old('nm') }}"
+                            />
+                            <div class="text-danger">
+                                {{Session::get('nm_update') }}
+                            </div>
+                        </div>
+                        @else
+                        <div class="col-md-6 col-sm-6">
+                            <input
+                                type="text"
+                                required="required"
+                                class="form-control"
+                                name="nm"
+                                autocomplete="off"
+                                value="{{ $e->nm }}"
+                            />
+                        </div>
+                        @endif
+                    </div>
+                    <div class="item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            for="first-name"
+                            >Country
+                        </label>
+                        <div class="col-md-6 col-sm-6">
+                            <input
+                                type="text"
+                                required="required"
+                                class="form-control"
+                                name="negara"
+                                autocomplete="off"
+                                value="{{$e->negara}}"
+                            />
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            for="first-name"
+                            >Description
+                        </label>
+                        <div class="col-md-6 col-sm-6">
+                            <textarea
+                                class="form-control"
+                                name="desc"
+                                style="height: 100px"
+                                required
+                                >{{$e->text}}</textarea
+                            >
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            for="first-name"
+                            >Star
+                        </label>
+                        <div class="col-md-6 col-sm-6">
+                            <input
+                                type="text"
+                                required="required"
+                                class="form-control"
+                                name="star"
+                                autocomplete="off"
+                                value="{{$e->star}}"
+                            />
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            for="first-name"
+                            >Logo Client
+                        </label>
+                        @if(Session::get('modal_file'))
+                        <div class="col-md-6 col-sm-6 bad">
+                            <input
+                                type="file"
+                                class="form-control"
+                                name="logo"
+                                accept="image/png, image/jpeg"
+                            />
+                            <div class="text-danger">
+                                {{Session::get('modal_file') }}
+                            </div>
+                        </div>
+                        @else
+                        <div class="col-md-6 col-sm-6">
+                            <input
+                                type="file"
+                                class="form-control"
+                                name="logo"
+                                accept="image/png, image/jpeg"
+                            />
+                            <div class="text-muted">
+                                For Best Image Quality Resolution Should be
+                                200px x 200px
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Save changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- Model Delete -->
+@foreach ($data as $d)
+<div
+    class="modal fade"
+    id="delete{{$d->id}}"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Delete Testimoni {{$d->nm}}
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                >
+                    X
+                </button>
+            </div>
+            <div class="modal-body">Are You Sure ?</div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Cancel
+                </button>
+                <a href="{{route('delete_testimoni',$d->id)}}">
+                    <button type="button" class="btn btn-danger">
+                        Delete
+                    </button></a
+                >
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach @endsection @section('script')
 <!-- Datatables -->
 <script src="{{
         asset('assets/cms/vendors/datatables.net/js/jquery.dataTables.min.js')
@@ -718,6 +690,19 @@
 <script>
     $(document).ready(() => {
         $("#slidertable").DataTable();
+        $(".alert").fadeOut(3000);
     });
 </script>
-@endsection
+@if(Session::get('nm_update'))
+<script>
+    $(function () {
+        $("#edit{{Session::get('modalId')}}").modal("show");
+    });
+</script>
+@endif @if(Session::get('modal_file'))
+<script>
+    $(function () {
+        $("#edit{{Session::get('modalId')}}").modal("show");
+    });
+</script>
+@endif @endsection

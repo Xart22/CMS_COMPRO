@@ -15,7 +15,7 @@ class CreatePartner extends Migration
     {
         Schema::create('partner', function (Blueprint $table) {
             $table->id();
-            $table->string('nm_partner');
+            $table->string('nm_partner')->unique();
             $table->string('desc');
             $table->string('logo_partner');
             $table->timestamps();

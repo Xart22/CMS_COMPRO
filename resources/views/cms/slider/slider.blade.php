@@ -620,10 +620,10 @@
         $(".alert").fadeOut(3000);
     });
 </script>
-@if(Session::get('modal'))
+@if(Session::get('modalId'))
 <script>
     $(function () {
-        $("#exampleModal").modal("show");
+        $("#modal{{Session::get('modalId')}}").modal("show");
     });
 </script>
 @endif @endsection

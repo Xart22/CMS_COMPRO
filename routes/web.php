@@ -34,20 +34,20 @@ Route::prefix('/cms')->group(function () {
     Route::get('/dashboard',[DashboardControllers::class,'index'])->name('dashboard');
 
 
-    //Slider Done
+    //Slider FIX
     Route::get('/slider',[SliderImageControllers::class,'index'])->name('slider');
     Route::post('/create/slider',[SliderImageControllers::class,'store'])->name('create_slider');
     Route::get('/preview/slider/{id}',[SliderImageControllers::class,'show'])->name('preview_slider');
     Route::post('/edit/slider/{id}',[SliderImageControllers::class,'update'])->name('edit_slider');
     Route::get('/delete/slider/{id}',[SliderImageControllers::class,'destroy'])->name('delete_slider');
 
-    //Intro
+    //Intro FIX
     Route::get('/intro',[IntroControllers::class,'index'])->name('intro');
     Route::post('/create/intro',[IntroControllers::class,'store'])->name('create_intro');
     Route::get('/preview/intro',[IntroControllers::class,'show'])->name('preview_intro');
     Route::post('/edit/intro/{id}',[IntroControllers::class,'update'])->name('edit_intro');
 
-    //Partner
+    //Partner FIX
     Route::get('/partner',[PartnerControllers::class,'index'])->name('partner');
     Route::post('/create/partner',[PartnerControllers::class,'store'])->name('create_partner');
     Route::get('/preview/partner',[PartnerControllers::class,'show'])->name('preview_partner');
@@ -56,11 +56,14 @@ Route::prefix('/cms')->group(function () {
 
     //Produk
 
-    //Testimoni
+    //Testimoni FIX
     Route::get('/testimoni',[TestimoniControllers::class,'index'])->name('testimoni');
     Route::post('/create/testimoni',[TestimoniControllers::class,'store'])->name('create_testimoni');
+    Route::get('/preview/testimoni/{id}',[TestimoniControllers::class,'show'])->name('preview_testimoni');
+    Route::post('/edit/testimoni/{id}',[TestimoniControllers::class,'update'])->name('edit_testimoni');
+    Route::get('/delete/testimoni/{id}',[TestimoniControllers::class,'destroy'])->name('delete_testimoni');
 
-    //Data Perusahaan
+    //Data Perusahaan FIX
     Route::get('/data-perusahaan',[DataPerusahaanControllers::class,'index'])->name('data_perusahaan');
     Route::post('/create/data-perusahaan',[DataPerusahaanControllers::class,'store'])->name('create_data_perusahaan');
     Route::post('/edit/data-perusahaan/{id}',[DataPerusahaanControllers::class,'update'])->name('edit_data_perusahaan');

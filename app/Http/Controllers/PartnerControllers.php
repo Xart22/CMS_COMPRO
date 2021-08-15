@@ -45,6 +45,10 @@ class PartnerControllers extends Controller
             return back()->with('fail','Size Resolution Should be
             200 x 200 ')->withInput();
         }
+        $get = PartnerModel::where('nm_partner',$req->nm_partner)->first();
+        if(!empty($get)){
+            return back()->with('nm','Name Partner Already Exist')->withInput();
+        }
         $nm = time().'_'. $img->getClientOriginalName();
         $data= new PartnerModel();
         $data->nm_partner=$req->nm_partner;
@@ -87,15 +91,60 @@ class PartnerControllers extends Controller
     public function update(Request $req, $id)
     {
         date_default_timezone_set('Asia/Jakarta');
-        $img = $req->file('logo');
-        $nm = time().'_'. $img->getClientOriginalName();
-         $data = PartnerModel::find($id);
-         $data->nm_partner=$req->nm_partner;
-         $data->desc=$req->desc;
-         $data->logo_partner=$this->PATH_FILE_DB.$nm;
-         $data->save();
-         Storage::putFileAs($this->PATH_FILE_DB, $img, $nm);
-         return redirect('cms/partner')->with(['success'=>'Success Updating Intro']);;
+        $get = PartnerModel::where('nm_partner',$req->nm_partner)->first();
+        if(!empty($get)){
+            if($get->id == $id && $get->nm_partner == $req->nm_partner){
+                if(!empty($req->file('logo'))){
+                $img = $req->file('logo');
+                $nm = time().'_'. $img->getClientOriginalName();
+                $cek = getimagesize($img);
+                }else{
+                $data = PartnerModel::find($id);
+                $data->nm_partner=$req->nm_partner;
+                $data->desc=$req->desc;
+                $data->save();
+                return redirect('cms/partner')->with(['success'=>'Success Updating Partner']);
+                }
+        
+                if($cek[0] != 200 && $cek[1] != 200){
+                    return back()->with('modal_file','Size Resolution Should be
+                    200 x 200 ')->withInput()->with('modalId',$id);
+                }
+                $data = PartnerModel::find($id);
+                $data->nm_partner=$req->nm_partner;
+                $data->desc=$req->desc;
+                $data->logo_partner=$this->PATH_FILE_DB.$nm;
+                $data->save();
+                Storage::putFileAs($this->PATH_FILE_DB, $img, $nm);
+                return redirect('cms/partner')->with(['success'=>'Success Updating Partner']);
+            }else{
+                return back()->with('nm_update','Name Partner Already Exist')->withInput()->with('modal',$id); 
+            }
+        }else{
+            if(!empty($req->file('logo'))){
+                $img = $req->file('logo');
+                $nm = time().'_'. $img->getClientOriginalName();
+                $cek = getimagesize($img);
+                }else{
+                $data = PartnerModel::find($id);
+                $data->nm_partner=$req->nm_partner;
+                $data->desc=$req->desc;
+                $data->save();
+                return redirect('cms/partner')->with(['success'=>'Success Updating Partner']);
+                }
+        
+                if($cek[0] != 200 && $cek[1] != 200){
+                    return back()->with('modal_file','Size Resolution Should be
+                    200 x 200 ')->withInput()->with('modalId',$id);
+                }
+                $data = PartnerModel::find($id);
+                $data->nm_partner=$req->nm_partner;
+                $data->desc=$req->desc;
+                $data->logo_partner=$this->PATH_FILE_DB.$nm;
+                $data->save();
+                Storage::putFileAs($this->PATH_FILE_DB, $img, $nm);
+                return redirect('cms/partner')->with(['success'=>'Success Updating Partner']);
+        }
     }
 
     /**
@@ -107,6 +156,6 @@ class PartnerControllers extends Controller
     public function destroy($id)
     {
         PartnerModel::where('id',$id)->delete();
-        return redirect('cms/partner')->with(['success'=>'Success Deleting Intro']);;
+        return redirect('cms/partner')->with(['success'=>'Success Deleting Partner']);;
     }
 }

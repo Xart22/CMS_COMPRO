@@ -15,7 +15,7 @@ class CreateProduk extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->id();
-            $table->string('nm_produk');
+            $table->string('nm_produk')->unique();
             $table->text('desc');
             $table->text('spec');
             $table->timestamps();

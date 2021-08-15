@@ -52,30 +52,74 @@
             </div>
         </div>
         <!--PreLoader Ends-->
-<!-- WOrk Process-->
-<section id="our-process" class="padding bg-light-dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 text-center">
-                <div class="heading-title whitecolor wow fadeInUp" data-wow-delay="100ms">
-                    <h2 class="font-normal">Our Authorized Parthner</h2>
+        <section id="our-testimonial" class="bglight padding_bottom">
+            <div class="parallax page-header testimonial-bg">
+                <div class="container">
+                    <div class="row">
+                        <div
+                            class="
+                                col-lg-6
+                                offset-lg-6
+                                col-md-12
+                                text-center text-lg-right
+                            "
+                        >
+                            <div
+                                class="heading-title wow fadeInUp padding_testi"
+                                data-wow-delay="100ms"
+                            >
+                                <span class="blackcolor">Kepuasan Anda</span>
+                                <h2 class="blackcolor font-normal">
+                                    Prioritas Kami
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <ul class="process-wrapp">
-                @foreach($data as $partner)
-                <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="/sumaju/storage/app/{{$partner ->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
-                    <p class="fontbold bottom25"><h2>{{$partner->nm_partner}}</h2></p>
-                    <p class="mt-n2 mt-sm-0">{{$partner->desc}}</p>
-                </li> 
-                @endforeach
-            </ul>
-        </div>
-    </div>
-</section>
-<!--WOrk Process ends-->
+            <div class="container">
+                <div class="owl-carousel" id="testimonial-slider">
+                    <!--item 1-->
+                    <div class="item testi-box">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 col-md-12 text-center">
+                                <div class="testimonial-round d-inline-block">
+                                    <img
+                                        src="/sumaju/storage/app/{{$data->img}}"
+                                        alt=""
+                                    />
+                                </div>
+                                <h4 class="defaultcolor font-light top15">
+                                    <a href="#.">{{$data->nm}}</a>
+                                </h4>
+                                <p>{{$data->negara}}</p>
+                            </div>
+                            <div
+                                class="
+                                    col-lg-6
+                                    offset-lg-2
+                                    col-md-10
+                                    offset-md-1
+                                    text-lg-left text-center
+                                "
+                            >
+                                <p class="bottom15 top90">
+                                    {{$data->text}}
+                                </p>
+                                <span class="d-inline-block test-star">
+                                    @for ($i = 0; $i < $data->star; $i++)
+
+                                    <i class="fas fa-star"></i>
+
+                                    @endfor
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Testimonials Ends-->
 
         <br />
         <br />

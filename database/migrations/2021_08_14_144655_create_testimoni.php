@@ -15,7 +15,7 @@ class CreateTestimoni extends Migration
     {
         Schema::create('testimoni', function (Blueprint $table) {
             $table->id();
-            $table->string('nm');
+            $table->string('nm')->unique();
             $table->string('img');
             $table->string('negara');
             $table->string('text');
