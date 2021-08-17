@@ -15,10 +15,12 @@
         <div class="d-flex justify-content-center">
             <div class="container-box mt-5">
                 <div class="container">
+                    @if($data)
                     <img
                         src="/sumaju/storage/app/{{ $data->logo_small }}"
                         alt=""
                     />
+                    @endif
                 </div>
                 <form action="{{ route('auth_login') }}" method="POST">
                     @csrf

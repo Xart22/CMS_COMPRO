@@ -7,8 +7,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="images/favicon.ico" type="image/ico" />
-
+        @if($dataPerusahaan)
         <title>{{$dataPerusahaan->nm_perusahaan}} | @yield('title')</title>
+        @endif
 
         <!-- Bootstrap -->
         <link
@@ -78,10 +79,9 @@
                             <a
                                 href="{{ route('dashboard') }}"
                                 class="site_title"
-                            >
-                                <span
-                                    >{{$dataPerusahaan->nm_perusahaan}}</span
-                                ></a
+                                >@if($dataPerusahaan)
+                                <span>{{$dataPerusahaan->nm_perusahaan}}</span
+                                >@endif</a
                             >
                         </div>
 
@@ -90,11 +90,13 @@
                         <!-- menu profile quick info -->
                         <div class="profile clearfix">
                             <div class="profile_pic">
+                                @if($dataPerusahaan)
                                 <img
                                     src="/sumaju/storage/app/{{ $dataPerusahaan->logo_small }}"
                                     alt="..."
                                     class="img-circle profile_img"
                                 />
+                                @endif
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
@@ -260,14 +262,13 @@
                                         data-toggle="dropdown"
                                         aria-expanded="false"
                                     >
+                                        @if($dataPerusahaan)
                                         <img
-                                            src="{{
-                                                asset(
-                                                    'assets/cms/images/img.jpg'
-                                                )
-                                            }}"
+                                            src="{{$dataPerusahaan->logo_small}}"
                                             alt=""
-                                        />John Doe
+                                        />
+                                        @endif
+                                        {{strtoupper(session('loggedUser')->name)}}
                                     </a>
                                     <div
                                         class="
