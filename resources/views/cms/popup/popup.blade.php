@@ -1,4 +1,4 @@
-@extends('cms\layout') @section('title','Intro')
+@extends('cms.layout') @section('title','Intro')
 @section('header')@section('content')
 <div class="row">
     @if(Session::get('success'))

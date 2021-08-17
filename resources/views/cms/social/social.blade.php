@@ -1,4 +1,4 @@
-@extends('cms\layout') @section('title','Social Media')
+@extends('cms.layout') @section('title','Social Media')
 @section('header')@section('content')
 <div class="row">
     @if(Session::get('success'))

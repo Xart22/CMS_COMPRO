@@ -1,4 +1,4 @@
-@extends('cms\layout') @section('title','Dashboard') @section('content')
+@extends('cms.layout') @section('title','Dashboard') @section('content')
 
 <div class="container d-flex">
     <div class="mobile border">

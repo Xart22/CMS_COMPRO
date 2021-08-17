@@ -1,4 +1,4 @@
-@extends('cms\layout') @section('title','testi') @section('header')
+@extends('cms.layout') @section('title','testi') @section('header')
 <link
     href="{{
         asset(
