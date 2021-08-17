@@ -6,9 +6,13 @@ use App\Http\Controllers\DataPerusahaanControllers;
 use App\Http\Controllers\IntroControllers;
 use App\Http\Controllers\PartnerControllers;
 use App\Http\Controllers\PopupControllers;
+use App\Http\Controllers\ProdukControllers;
 use App\Http\Controllers\SliderImageControllers;
+use App\Http\Controllers\SocialControllers;
 use App\Http\Controllers\TestimoniControllers;
 use App\Http\Controllers\web\allControllers;
+use App\Models\ProdukModel;
+use App\Models\SocialModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 
 // WEB
 Route::get('/', [allControllers::class,'index'])->name('home');
+Route::get('/about', [allControllers::class,'about'])->name('about');
+Route::get('/product/{id}',[allControllers::class,'showProduk'])->name('produk_view');
 
 
 
@@ -66,6 +72,14 @@ Route::post('/login',[AuthControllers::class,'create'])->name('auth_login');
     Route::post('/edit/testimoni/{id}',[TestimoniControllers::class,'update'])->name('edit_testimoni');
     Route::get('/delete/testimoni/{id}',[TestimoniControllers::class,'destroy'])->name('delete_testimoni');
 
+    //Produk
+    Route::get('/produk',[ProdukControllers::class,'index'])->name('produk');
+    Route::post('/create/produk',[ProdukControllers::class,'store'])->name('create_produk');
+    Route::get('/preview/produk/{id}',[ProdukControllers::class,'show'])->name('preview_produk');
+    Route::post('/edit/produk/{id}',[ProdukControllers::class,'update'])->name('edit_produk');
+    Route::get('/delete/produk/{id}',[ProdukControllers::class,'destroy'])->name('delete_produk');
+
+
     // Pop Up FIX
     Route::get('/popup',[PopupControllers::class,'index'])->name('popup');
     Route::post('/create/popup',[PopupControllers::class,'store'])->name('create_popup');
@@ -76,4 +90,9 @@ Route::post('/login',[AuthControllers::class,'create'])->name('auth_login');
     Route::post('/create/data-perusahaan',[DataPerusahaanControllers::class,'store'])->name('create_data_perusahaan');
     Route::post('/edit/data-perusahaan/{id}',[DataPerusahaanControllers::class,'update'])->name('edit_data_perusahaan');
 
+
+    //Social
+    Route::get('/social',[SocialControllers::class,'index'])->name('social');
+    Route::post('/create/social',[SocialControllers::class,'store'])->name('create_social');
+    Route::post('/edit/social/{id}',[SocialControllers::class,'update'])->name('edit_social');
 });

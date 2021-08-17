@@ -16,7 +16,7 @@ class CreateProduk extends Migration
         Schema::create('produk', function (Blueprint $table) {
             $table->id();
             $table->string('nm_produk')->unique();
-            $table->string('img_small');
+            $table->string('img_small')->nullable();
             $table->string('img_big_1');
             $table->string('img_big_2');
             $table->string('img_big_3');

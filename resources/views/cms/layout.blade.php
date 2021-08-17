@@ -135,7 +135,9 @@
                                                 >
                                             </li>
                                             <li class="">
-                                                <a href="index3.html">Produk</a>
+                                                <a href="{{ route('produk') }}"
+                                                    >Produk</a
+                                                >
                                             </li>
                                             <li class="">
                                                 <a
@@ -172,6 +174,11 @@
                                                         route('data_perusahaan')
                                                     }}"
                                                     >Infromasi Perusahaan</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('social') }}"
+                                                    >Social Media</a
                                                 >
                                             </li>
                                         </ul>
