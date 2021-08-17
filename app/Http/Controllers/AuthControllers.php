@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,7 @@ class AuthControllers extends Controller
      */
     public function index()
     {
-        return view('auth.index');
+        return view('auth.index',['data'=>DataPerusahaanModel::first()]);
     }
 
     /**
@@ -102,6 +103,9 @@ class AuthControllers extends Controller
      */
     public function destroy(Request $req)
     {
-        //
+        if(session()->has('loggedUser')){
+            session()->pull('loggedUser');
+            return redirect('/');
+        }
     }
 }

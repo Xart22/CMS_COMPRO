@@ -12,8 +12,6 @@ use App\Models\SliderModel;
 use App\Models\SocialModel;
 use App\Models\TestimoniModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
 class allControllers extends Controller
 {

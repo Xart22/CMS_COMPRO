@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\SliderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,9 @@ class SliderImageControllers extends Controller
      */
     private $PATH_FILE_DB = "public/slider/";
     public function index()
-    {
+    {   
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.slider.slider',['data'=>SliderModel::get()]);
     }
 

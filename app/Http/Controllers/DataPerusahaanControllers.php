@@ -16,6 +16,8 @@ class DataPerusahaanControllers extends Controller
     private $PATH_FILE_DB = "public/logo/";
     public function index()
     {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.setting.index',['data'=>DataPerusahaanModel::first()]);
     }
 

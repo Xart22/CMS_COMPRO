@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\SliderModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class DashboardControllers extends Controller
      */
 
     public function index()
-    {
+    {   
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.dashboard');
     }
 

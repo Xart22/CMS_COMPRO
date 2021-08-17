@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\IntroModel;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,8 @@ class IntroControllers extends Controller
      */
     public function index()
     {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.intro.intro',['data'=>IntroModel::first()]);
     }
 

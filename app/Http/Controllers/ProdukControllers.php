@@ -20,6 +20,8 @@ class ProdukControllers extends Controller
     private $PATH_FILE_DB = "public/produk/";
     public function index()
     {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.produk.produk',['data'=>ProdukModel::get()]);
     }
 

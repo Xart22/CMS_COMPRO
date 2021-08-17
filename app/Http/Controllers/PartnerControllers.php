@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\PartnerModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,8 @@ class PartnerControllers extends Controller
     private $PATH_FILE_DB = "public/partner/";
     public function index()
     {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.partner.partner',['data'=>PartnerModel::get()]);
     }
 

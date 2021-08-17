@@ -15,7 +15,10 @@
         <div class="d-flex justify-content-center">
             <div class="container-box mt-5">
                 <div class="container">
-                    <img src="{{ asset('assets/images/cap.png') }}" alt="" />
+                    <img
+                        src="/sumaju/storage/app/{{ $data->logo_small }}"
+                        alt=""
+                    />
                 </div>
                 <form action="{{ route('auth_login') }}" method="POST">
                     @csrf

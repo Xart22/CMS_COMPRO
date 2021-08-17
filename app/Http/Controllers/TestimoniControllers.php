@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\TestimoniModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,8 @@ class TestimoniControllers extends Controller
     private $PATH_FILE_DB = "public/testimoni/";
     public function index()
     {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.testimoni.testimoni',['data'=>TestimoniModel::get()]);
     }
 

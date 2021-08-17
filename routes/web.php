@@ -40,6 +40,9 @@ Route::prefix('/cms')->group(function () {
     //AUTH Manual 
 Route::get('/login', [AuthControllers::class,'index'])->name('login');
 Route::post('/login',[AuthControllers::class,'create'])->name('auth_login');
+Route::get('/logout', [AuthControllers::class,'destroy'])->name('logout');
+
+Route::middleware(['CheckAuth'])->group(function (){
 
     Route::get('/dashboard',[DashboardControllers::class,'index'])->name('dashboard');
 
@@ -95,4 +98,5 @@ Route::post('/login',[AuthControllers::class,'create'])->name('auth_login');
     Route::get('/social',[SocialControllers::class,'index'])->name('social');
     Route::post('/create/social',[SocialControllers::class,'store'])->name('create_social');
     Route::post('/edit/social/{id}',[SocialControllers::class,'update'])->name('edit_social');
+});
 });

@@ -509,13 +509,6 @@
                     </div>
                 </div>
             </div>
-
-            <section id="stayconnect11" class="bglight position-relative">
-                <div class="container">
-                    <div id="map"></div>
-                </div>
-            </section>
-
             <div class="floatwa">
                 <a
                     href="https://api.whatsapp.com/send?phone=6281319378284&amp;text=Halo%20Semaju,%20Boleh%20kami%20dibantu"

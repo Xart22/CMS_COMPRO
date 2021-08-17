@@ -180,78 +180,22 @@
         <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div id="partners-slider" class="owl-carousel">
+                        @foreach($produk as $pro)
                         <div class="item">
                                 <div class="team-box">
                                         <div class="image">
-                                            <img src="{{ asset('assets/images/team-1.jpg')}}" alt="">
+                                            <img src="/sumaju/storage/app/{{$pro->img_big_1}}" alt="">
                                         </div>
                                         <div class="team-content">
-                                            <h4 class="darkcolor">Air Filter ELement </h4>
+                                            <h4 class="darkcolor">{{$pro->nm_prodok}} </h4>
                                             <p>Click for info</p>
                                             <ul class="social-icons-simple">
-                                                <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                                                <li><a class="facebook" href="{{route('produk_view',$pro->id)}}"><i class="fab fa-facebook-f"></i> </a> </li>
                                             </ul>
                                         </div>
                                     </div>
                         </div>
-                        <div class="item">
-                                <div class="team-box">
-                                        <div class="image">
-                                            <img src="{{ asset('assets/images/team-2.jpg')}}" alt="">
-                                        </div>
-                                        <div class="team-content">
-                                            <h4 class="darkcolor">Air Cooler Elliot Compressor</h4>
-                                            <p>Click for info</p>
-                                            <ul class="social-icons-simple">
-                                                <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                        </div>
-                        <div class="item">
-                                <div class="team-box">
-                                        <div class="image">
-                                            <img src="{{ asset('assets/images/team-3.jpg')}}" alt="">
-                                        </div>
-                                        <div class="team-content">
-                                            <h4 class="darkcolor">Centac Cooler</h4>
-                                            <p>Click for info</p>
-                                            <ul class="social-icons-simple">
-                                                <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                        </div>
-                        
-                        <div class="item">
-                                <div class="team-box">
-                                        <div class="image">
-                                            <img src="{{ asset('assets/images/team-4.jpg')}}" alt="">
-                                        </div>
-                                        <div class="team-content">
-                                            <h4 class="darkcolor">Repair Centac Cooler (Retubing)</h4>
-                                            <p>Click for info</p>
-                                            <ul class="social-icons-simple">
-                                                <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                        </div>
-
-                        <div class="item">
-                                <div class="team-box">
-                                        <div class="image">
-                                            <img src="{{ asset('assets/images/team-3.jpg')}}" alt="">
-                                        </div>
-                                        <div class="team-content">
-                                            <h4 class="darkcolor">Centac Cooler</h4>
-                                            <p>Click for info</p>
-                                            <ul class="social-icons-simple">
-                                                <li><a class="facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
@@ -391,6 +335,9 @@
         </div>
     </div>
 </section>
+<div class="container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15841.904068804963!2d107.7270912!3d-6.9530394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8a69ae7f66c9b9d4!2sEbot%20Room!5e0!3m2!1sen!2sid!4v1629218670107!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
 <!-- Contact US ends -->
 @section('script')
 <script>
@@ -407,24 +354,6 @@
         );
     }
     //]]>
-
-    function initMap() {
-        // The location of Uluru
-        const uluru = { lat: -25.344, lng: 131.036 };
-        // The map, centered at Uluru
-        const map = new google.maps.Map(
-            document.getElementById("map"),
-            {
-                zoom: 4,
-                center: uluru,
-            }
-        );
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-        });
-    }
 </script>
 @endsection
 @endsection

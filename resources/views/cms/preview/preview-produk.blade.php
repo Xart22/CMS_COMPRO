@@ -211,7 +211,7 @@
     }
 
     var s = window.matchMedia("(max-width: 375px)");
-    responClass(s); // Call listener function at run time
-    s.addListener(responClass); // Attach listener function on state changes
+    responClass(s);
+    s.addListener(responClass);
 </script>
 @endsection @endsection

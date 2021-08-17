@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPerusahaanModel;
 use App\Models\SocialModel;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,8 @@ class SocialControllers extends Controller
      */
     public function index()
     {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        view()->share('dataPerusahaan',$dataPerusahaan);
         return view('cms.social.social',['data'=>SocialModel::first()]);
     }
 

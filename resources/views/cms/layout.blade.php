@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-        <title>SEMAJU ELANG PUTRA | @yield('title')</title>
+        <title>{{$dataPerusahaan->nm_perusahaan}} | @yield('title')</title>
 
         <!-- Bootstrap -->
         <link
@@ -75,9 +75,13 @@
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0">
-                            <a href="index.html" class="site_title"
-                                ><i class="fa fa-paw"></i>
-                                <span>Gentelella Alela!</span></a
+                            <a
+                                href="{{ route('dashboard') }}"
+                                class="site_title"
+                            >
+                                <span
+                                    >{{$dataPerusahaan->nm_perusahaan}}</span
+                                ></a
                             >
                         </div>
 
@@ -87,16 +91,16 @@
                         <div class="profile clearfix">
                             <div class="profile_pic">
                                 <img
-                                    src="{{
-                                        asset('assets/cms/images/img.jpg')
-                                    }}"
+                                    src="/sumaju/storage/app/{{ $dataPerusahaan->logo_small }}"
                                     alt="..."
                                     class="img-circle profile_img"
                                 />
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <h2>John Doe</h2>
+                                <h2>
+                                    {{strtoupper(session('loggedUser')->name)}}
+                                </h2>
                             </div>
                         </div>
                         <!-- /menu profile quick info -->
@@ -224,7 +228,7 @@
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Logout"
-                                href="login.html"
+                                href="{{ route('logout') }}"
                             >
                                 <span
                                     class="glyphicon glyphicon-off"
@@ -280,7 +284,7 @@
                                         >
                                         <a
                                             class="dropdown-item"
-                                            href="login.html"
+                                            href="{{ route('logout') }}"
                                             ><i
                                                 class="
                                                     fa fa-sign-out
