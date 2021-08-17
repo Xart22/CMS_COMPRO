@@ -17,8 +17,7 @@ class CreateDataPerusahaan extends Migration
             $table->id();
             $table->string('nm_perusahaan');
             $table->text('alamat');
-            $table->string('lat');
-            $table->string('long');
+            $table->text('embeded_maps');
             $table->string('no_telp');
             $table->string('no_wa');
             $table->string('email');

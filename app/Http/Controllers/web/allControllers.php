@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use App\Models\DataPerusahaanModel;
+use App\Models\InboxModel;
 use App\Models\IntroModel;
 use App\Models\PartnerModel;
 use App\Models\PopupModel;
@@ -67,6 +68,40 @@ class allControllers extends Controller
         return view('web.produk',['data'=>ProdukModel::find($id),'dataPerusahaan'=>DataPerusahaanModel::first(),'social'=>SocialModel::first(),'popup'=>PopupModel::first()]);
     }
 
+    public function contact()
+    {
+        $dataPerusahaan = DataPerusahaanModel::first();
+        $slider = SliderModel::get();
+        $intro = IntroModel::first();
+        $partner = PartnerModel::get();
+        $testi = TestimoniModel::get();
+        $popup = PopupModel::first();
+        $social = SocialModel::first();
+        $produk = ProdukModel::get();
+        view()->share('produk',$produk);
+
+
+        return view('web.contact',
+        ['dataPerusahaan'=>$dataPerusahaan,
+         'slider'=>$slider,
+         'intro'=>$intro,
+         'partner'=>$partner,
+         'testimoni'=>$testi,
+         'popup'=>$popup,
+         'social'=>$social]);
+    }
+
+    public function send(Request $req)
+    {
+        $data = new InboxModel;
+        $data->form = $req->form;
+        $data->email=$req->email;
+        $data->no_telp=$req->tlp;
+        $data->message=$req->text;
+        $data->save();
+
+        return redirect()->route('home');
+    }
 
 
 }

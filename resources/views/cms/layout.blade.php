@@ -160,6 +160,12 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('inbox') }}"
+                                            ><i class="fa fa-envelope"></i>
+                                            Inbox</a
+                                        >
+                                    </li>
                                 </ul>
                             </div>
                             <div class="menu_section">
@@ -264,7 +270,7 @@
                                     >
                                         @if($dataPerusahaan)
                                         <img
-                                            src="{{$dataPerusahaan->logo_small}}"
+                                            src="/sumaju/storage/app/{{$dataPerusahaan->logo_small}}"
                                             alt=""
                                         />
                                         @endif
@@ -309,8 +315,8 @@
                 <!-- footer content -->
                 <footer>
                     <div class="pull-right">
-                        Gentelella - Bootstrap Admin Template by
-                        <a href="https://colorlib.com">Colorlib</a>
+                        Developed by
+                        <a href="https://Alurgerak.id">Alurgerak.id</a>
                     </div>
                     <div class="clearfix"></div>
                 </footer>

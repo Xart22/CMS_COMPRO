@@ -61,11 +61,12 @@ class DataPerusahaanControllers extends Controller
         $logo_small = time().'_'. $small->getClientOriginalName();
         $logo_big   =time().'_'. $big->getClientOriginalName();
 
+        $width = str_replace('width="600"','width="100%"',$req->maps);
+
         DataPerusahaanModel::insert([
             'nm_perusahaan'=>$req->nm_perusahaan,
             'alamat'=>$req->alamat,
-            'lat'=>$req->lat,
-            'long'=>$req->long,
+            'embeded_maps'=>$req->$width,
             'no_telp'=>$req->no_tlp,
             'no_wa'=>$req->no_wa,
             'email'=>$req->email,
@@ -76,7 +77,7 @@ class DataPerusahaanControllers extends Controller
         ]);
         Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
         Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
-        return redirect('cms/data-perusahaan');
+        return redirect('cms/data-perusahaan')->with(['success'=>'Success Adding Data']);
     }
 
     /**
@@ -110,6 +111,8 @@ class DataPerusahaanControllers extends Controller
      */
     public function update(Request $req, $id)
     {
+        if($req->file('logo_small')){
+
         $small = $req->file('logo_small');
         $cek = getimagesize($small);
         $big = $req->file('logo_big');
@@ -126,11 +129,11 @@ class DataPerusahaanControllers extends Controller
         }
         $logo_small = time().'_'. $small->getClientOriginalName();
         $logo_big   =time().'_'. $big->getClientOriginalName();
+        $width = str_replace('width="600"','width="100%"',$req->maps);
         DataPerusahaanModel::where('id',$id)->update([
             'nm_perusahaan'=>$req->nm_perusahaan,
             'alamat'=>$req->alamat,
-            'lat'=>$req->lat,
-            'long'=>$req->long,
+            'embeded_maps'=>$width,
             'no_telp'=>$req->no_tlp,
             'no_wa'=>$req->no_wa,
             'email'=>$req->email,
@@ -142,6 +145,20 @@ class DataPerusahaanControllers extends Controller
         Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
         Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
         return redirect('cms/data-perusahaan');
+    }else{
+        $width = str_replace('width="600"','width="100%"',$req->maps);
+        DataPerusahaanModel::where('id',$id)->update([
+            'nm_perusahaan'=>$req->nm_perusahaan,
+            'alamat'=>$req->alamat,
+            'embeded_maps'=>$width,
+            'no_telp'=>$req->no_tlp,
+            'no_wa'=>$req->no_wa,
+            'email'=>$req->email,
+            'hari_operasional'=>$req->hari,
+            'jam_operasional'=>$req->jam
+        ]);
+        return redirect('cms/data-perusahaan')->with(['success'=>'Success Updating Data']);
+    }
     }
 
     /**

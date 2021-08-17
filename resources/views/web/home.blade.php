@@ -1,4 +1,4 @@
-@extends('web/layout') @section('title','Home') @section('content')
+@extends('web.layout') @section('title','Home') @section('content')
 <!--Main Slider-->
 <section id="main-banner-area" class="position-relative">
     <div id="revo_main_wrapper" class="rev_slider_wrapper fullwidthbanner-container m-0 p-0 bg-light" data-alias="classic4export">
@@ -101,9 +101,11 @@
                 <div class="heading-title mb-6">
                     <h2 class="darkcolor font-normal bottom30"><span class="defaultcolor">{{$dataPerusahaan->nm_perusahaan}} </span> Background</h2>
                 </div>
+                @if($intro)
                 <p class="bottom35">{{$intro->paragraf_1}}</p>
                 <p class="bottom35">{{$intro->paragraf_2}}</p>
                 <p class="bottom35">{{$intro->paragraf_3}}</p>
+                @endif
               
             </div>
             <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-5 wow fadeInRight" data-wow-delay="100ms">
@@ -335,8 +337,8 @@
         </div>
     </div>
 </section>
-<div class="container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15841.904068804963!2d107.7270912!3d-6.9530394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8a69ae7f66c9b9d4!2sEbot%20Room!5e0!3m2!1sen!2sid!4v1629218670107!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<div class="container mt-5">
+    {!! htmlspecialchars_decode($dataPerusahaan->embeded_maps) !!}
 </div>
 <!-- Contact US ends -->
 @section('script')

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthControllers;
 use App\Http\Controllers\DashboardControllers;
 use App\Http\Controllers\DataPerusahaanControllers;
+use App\Http\Controllers\InboxControllers;
 use App\Http\Controllers\IntroControllers;
 use App\Http\Controllers\PartnerControllers;
 use App\Http\Controllers\PopupControllers;
@@ -31,6 +32,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [allControllers::class,'index'])->name('home');
 Route::get('/about', [allControllers::class,'about'])->name('about');
 Route::get('/product/{id}',[allControllers::class,'showProduk'])->name('produk_view');
+Route::get('/contact',[allControllers::class,'contact'])->name('contact_view');
+Route::post('/send',[allControllers::class,'send'])->name('send_email');
+
 
 
 
@@ -98,5 +102,8 @@ Route::middleware(['CheckAuth'])->group(function (){
     Route::get('/social',[SocialControllers::class,'index'])->name('social');
     Route::post('/create/social',[SocialControllers::class,'store'])->name('create_social');
     Route::post('/edit/social/{id}',[SocialControllers::class,'update'])->name('edit_social');
+
+    //Inbox
+    Route::get('/inbox',[InboxControllers::class,'index'])->name('inbox');
 });
 });

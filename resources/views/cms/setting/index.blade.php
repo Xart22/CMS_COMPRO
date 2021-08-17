@@ -87,54 +87,26 @@
                     <div class="field item form-group">
                         <label
                             class="col-form-label col-md-3 col-sm-3 label-align"
-                            >Lat Koordinat Google Maps</label
+                            >Embed Google Maps</label
                         >
                         <div class="col-md-6 col-sm-6">
                             <div class="form-floating">
-                                @if( isset($data->lat))
-                                <input
+                                @if( isset($data->embeded_maps))
+                                <textarea
                                 class="form-control"
-                                name="lat"
-                                required
-                                autocomplete="off"
-                                value="{{$data->lat}}"
-                            />
+                                name="maps"
+                                style="height: 160px"
+                                
+                                >{{$data->embeded_maps}}</textarea
+                            >
                                 @else
-                                <input
+                                <textarea
                                 class="form-control"
-                                name="lat"
-                                required
-                                autocomplete="off"
-                                value="{{old('lat')}}"
-                            />
-                                @endif
-                            </div>
-                        </div>
-                        <div class="alert">please put something here</div>
-                    </div>
-                    <div class="field item form-group">
-                        <label
-                            class="col-form-label col-md-3 col-sm-3 label-align"
-                            >Long Koordinat Google Maps</label
-                        >
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-floating">
-                                @if( isset($data->long))
-                                <input
-                                class="form-control"
-                                name="long"
-                                required
-                                autocomplete="off"
-                                value="{{$data->long}}"
-                            />
-                                @else
-                                <input
-                                class="form-control"
-                                name="long"
-                                required
-                                autocomplete="off"
-                                value="{{old('long')}}"
-                            />
+                                name="maps"
+                                style="height: 160px"
+                                
+                               
+                            >{{old('embed_map')}}</textarea>
                                 @endif
                             </div>
                         </div>
@@ -154,7 +126,8 @@
                                 required
                                 autocomplete="off"
                                 value="{{$data->no_telp}}"
-                            />
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                            
                                 @else
                                 <input
                                 class="form-control"
@@ -162,7 +135,9 @@
                                 required
                                 autocomplete="off"
                                 value="{{old('no_tlp')}}"
-                            />
+                                placeholder="0222507XXX"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                            
                                 @endif
                             </div>
                         </div>
@@ -182,15 +157,21 @@
                                 required
                                 autocomplete="off"
                                 value="{{$data->no_wa}}"
-                            />
+                                type="text"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                           
                                 @else
                                 <input
                                 class="form-control"
                                 name="no_wa"
                                 required
                                 autocomplete="off"
+                                placeholder="6282218XXXXXX"
                                 value="{{old('no_wa')}}"
-                            />
+                                type="text"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+
+                          
                                 @endif
                             </div>
                         </div>
@@ -211,6 +192,7 @@
                                 required
                                 autocomplete="off"
                                 value="{{$data->email}}"
+                                placeholder="admin@admin.com"
                             />
                                 @else
                                 <input
@@ -220,6 +202,7 @@
                                 required
                                 autocomplete="off"
                                 value="{{old('email')}}"
+                                placeholder="admin@admin.com"
                             />
                                 @endif
                             </div>
@@ -240,6 +223,7 @@
                                 required
                                 autocomplete="off"
                                 value="{{$data->hari_operasional}}"
+                                placeholder="Senin - Jumat"
                             />
                                 @else
                                 <input
@@ -248,6 +232,7 @@
                                 required
                                 autocomplete="off"
                                 value="{{old('hari')}}"
+                                placeholder="Senin - Jumat"
                             />
                                 @endif
                             </div>
@@ -268,6 +253,7 @@
                                 required
                                 autocomplete="off"
                                 value="{{$data->jam_operasional}}"
+                                placeholder="08:00 - 20:00"
                             />
                                 @else
                                 <input
@@ -276,6 +262,7 @@
                                 required
                                 autocomplete="off"
                                 value="{{old('jam')}}"
+                                placeholder="08:00 - 20:00"
                             />
                                 @endif
                             </div>
@@ -300,13 +287,12 @@
                                 {{Session::get('fail_small') }}
                             </div>
                         </div>
-                        @else
+                        @elseif($data->logo_small)
                         <div class="col-md-6 col-sm-6">
                             <input
                                 class="form-control"
                                 type="file"
                                 name="logo_small"
-                                required="required"
                                 accept="image/png, image/jpeg"
                             />
                             <div class="text-muted">
@@ -314,6 +300,20 @@
                                 200px x 200px
                             </div>
                     </div>
+                    @else
+                    <div class="col-md-6 col-sm-6">
+                        <input
+                            class="form-control"
+                            type="file"
+                            name="logo_small"
+                            required="required"
+                            accept="image/png, image/jpeg"
+                        />
+                        <div class="text-muted">
+                            For Best Image Quality Resolution Should be
+                            200px x 200px
+                        </div>
+                </div>
                     @endif
                     </div>
                     <div class="field item form-group">
@@ -334,6 +334,19 @@
                                 {{Session::get('fail_big') }}
                             </div>
                         </div>
+                        @elseif($data->logo_big)
+                        <div class="col-md-6 col-sm-6">
+                            <input
+                                class="form-control"
+                                type="file"
+                                name="logo_big"
+                                accept="image/png, image/jpeg"
+                            />
+                            <div class="text-muted">
+                                For Best Image Quality Resolution Should be
+                                800px x 600px
+                            </div>
+                        </div>
                         @else
                         <div class="col-md-6 col-sm-6">
                             <input
@@ -347,9 +360,9 @@
                                 For Best Image Quality Resolution Should be
                                 800px x 600px
                             </div>
-
-                            @endif
                         </div>
+                            @endif
+                        
                     </div>
                     <div class="ln_solid">
                         <div class="form-group">
@@ -371,5 +384,8 @@
     $(document).ready(()=>{
         $(".alert").fadeOut(3000);
     })
+function onnlyNum(value) {
+  return /^\d*\.?\d*$/.test(value); 
+};
 </script>
 @endsection

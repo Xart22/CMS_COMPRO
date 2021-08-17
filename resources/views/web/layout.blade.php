@@ -119,7 +119,7 @@
                                 <a
                                     class="nav-link"
                                     style="color: white"
-                                    href="contact.html"
+                                    href="{{route('contact_view')}}"
                                     >Contact</a
                                 >
                             </li>
@@ -340,7 +340,7 @@
                                 >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html"
+                                <a class="nav-link"href="{{route('contact_view')}}"
                                     >Contact</a
                                 >
                             </li>
@@ -642,11 +642,12 @@
         </style>
 
         <br />
+        @if($popup)
         <div class="popbox hide" id="popbox">	  <div aria-label='Close' class="pop-overlay" onclick='document.getElementById("popbox").style.display="none";removeClassonBody();'/>	  <div class="pop-content">		<a href="#" target="_blank" rel="noopener noreferrer" title="box"><br />
             <div class="popcontent">			<img src="/sumaju/storage/app/{{$popup->img}}" alt="banner" width="850" height="450"/><br />
             </div>		</a><br />
           <button aria-label='Close' class='popbox-close-button' onclick='document.getElementById("popbox").style.display="none";removeClassonBody();'>×</button><br />
-        </div>	</div>
+        </div>	</div>@endif
         <!--Footer ends-->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>

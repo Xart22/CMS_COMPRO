@@ -1,4 +1,4 @@
-@extends('web.layout') @section('title','About') @section('header')
+@extends('web.layout') @section('title','Contact') @section('header')
 @section('content')
 
 <div class="container" style="margin-top: 25rem">
@@ -54,43 +54,44 @@
     id="our-feature"
     class="single-feature padding_bottom padding_top_half mt-n4"
 >
-    <div class="container">
-        <div class="row d-flex align-items-center">
-            <div
-                class="
-                    col-lg-6 col-md-7 col-sm-7
-                    text-sm-left text-center
-                    wow
-                    fadeInLeft
-                "
-                data-wow-delay="100ms"
-            >
-                <div class="heading-title mb-6">
-                    <h2 class="darkcolor font-normal bottom30">
-                        <span class="defaultcolor"
-                            >{{$dataPerusahaan->nm_perusahaan}}
-                        </span>
-                        Background
-                    </h2>
-                </div>
-                <p class="bottom35">{{$intro->paragraf_1}}</p>
-                <p class="bottom35">{{$intro->paragraf_2}}</p>
-                <p class="bottom35">{{$intro->paragraf_3}}</p>
+    <div class="container border p-3">
+        <h4 class="mb-1" style="text-align: center">Get Free Quote</h4>
+        <form class="row g-3" method="POST" action="{{ route('send_email') }}">
+            @csrf
+            <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Name</label>
+                <input type="text" class="form-control" name="form" />
             </div>
-            <div
-                class="col-lg-5 offset-lg-1 col-md-5 col-sm-5 wow fadeInRight"
-                data-wow-delay="100ms"
-            >
-                <div class="image">
-                    <img
-                        alt="SEO"
-                        src="{{ asset('assets/images/awesome-feature.png') }}"
-                    />
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" />
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">No Telpon</label>
+                <input type="text" class="form-control" name="tlp" />
+            </div>
+            <div class="col-12 mt-2">
+                <div class="form-floating">
+                    <textarea
+                        name="text"
+                        class="form-control"
+                        placeholder="Leave a comment here"
+                        id="floatingTextarea2"
+                        style="height: 100px"
+                    ></textarea>
                 </div>
             </div>
-        </div>
+
+            <div class="container p-3">
+                <button type="submit" class="btn btn-primary w-100">
+                    Send
+                </button>
+            </div>
+        </form>
     </div>
+    <div class="container mt-2">{!!$dataPerusahaan->embeded_maps!!}</div>
 </section>
+
 @section('script')
 <script>
     $(document).ready(() => {

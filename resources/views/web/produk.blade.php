@@ -1,4 +1,4 @@
-@extends('web/layout') @section('title','Products') @section('header')
+@extends('web.layout') @section('title','Products') @section('header')
 <link
     rel="stylesheet"
     type="text/css"
