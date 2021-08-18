@@ -401,9 +401,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            @if(isset($data->logo_small))
+                            @if(isset($data->logo_small)&&isset($data->logo_big))
                             <td><img src="/semaju/storage/app/{{$data->logo_small}}" ></td>
-                            <td><img src="/semaju/storage/app/{{$data->logo_big}}"  ></td>
+                            <td><img src="/semaju/storage/app/{{$data->logo_big}}"></td>
                             @endif
                         </tr>
                     </tbody>
