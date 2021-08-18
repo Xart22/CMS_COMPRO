@@ -272,13 +272,13 @@
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/sumaju/storage/app/{{$slider->img}}"
+                                                            src="/semaju/storage/app/{{$slider->img}}"
                                                             width="200"
                                                         />
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="/sumaju/public/cms/preview/slider/{{$slider->id}}"
+                                                            href="/semaju/public/cms/preview/slider/{{$slider->id}}"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                         >

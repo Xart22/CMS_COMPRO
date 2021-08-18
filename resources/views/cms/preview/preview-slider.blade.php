@@ -87,7 +87,7 @@
                         >
                             <!-- MAIN IMAGE -->
                             <img
-                                src="/sumaju/storage/app/{{$data->img}}"
+                                src="/semaju/storage/app/{{$data->img}}"
                                 alt=""
                                 data-bgposition="center center"
                                 data-bgfit="cover"

@@ -66,7 +66,7 @@
             <ul class="process-wrapp">
                 @foreach($data as $partner)
                 <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="/sumaju/storage/app/{{$partner ->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
+                    <img src="/semaju/storage/app/{{$partner ->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
                     <p class="fontbold bottom25"><h2>{{$partner->nm_partner}}</h2></p>
                     <p class="mt-n2 mt-sm-0">{{$partner->desc}}</p>
                 </li> 

@@ -91,7 +91,7 @@
                     <div class="carousel-item active">
                         <span class="zoom" id="ex1">
                             <img
-                                src="/sumaju/storage/app/{{$data->img_big_1}}"
+                                src="/semaju/storage/app/{{$data->img_big_1}}"
                                 width="500"
                                 height="500"
                                 alt="Daisy on the Ohoopee"
@@ -101,7 +101,7 @@
                     <div class="carousel-item">
                         <span class="zoom" id="ex1">
                             <img
-                                src="/sumaju/storage/app/{{$data->img_big_1}}"
+                                src="/semaju/storage/app/{{$data->img_big_1}}"
                                 width="500"
                                 height="500"
                                 alt="Daisy on the Ohoopee"
@@ -111,7 +111,7 @@
                     <div class="carousel-item">
                         <span class="zoom" id="ex1">
                             <img
-                                src="/sumaju/storage/app/{{$data->img_big_1}}"
+                                src="/semaju/storage/app/{{$data->img_big_1}}"
                                 width="500"
                                 height="500"
                                 alt="Daisy on the Ohoopee"

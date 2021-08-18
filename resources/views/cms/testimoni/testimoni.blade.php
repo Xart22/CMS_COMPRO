@@ -335,7 +335,7 @@
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/sumaju/storage/app/{{$testi ->img}}"
+                                                            src="/semaju/storage/app/{{$testi ->img}}"
                                                             width="150"
                                                         />
                                                     </td>

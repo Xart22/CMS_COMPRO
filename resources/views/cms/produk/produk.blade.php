@@ -268,25 +268,25 @@
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/sumaju/storage/app/{{$produk->img_big_1}}"
+                                                            src="/semaju/storage/app/{{$produk->img_big_1}}"
                                                             width="200"
                                                         />
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/sumaju/storage/app/{{$produk->img_big_2}}"
+                                                            src="/semaju/storage/app/{{$produk->img_big_2}}"
                                                             width="200"
                                                         />
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/sumaju/storage/app/{{$produk->img_big_3}}"
+                                                            src="/semaju/storage/app/{{$produk->img_big_3}}"
                                                             width="200"
                                                         />
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="/sumaju/public/cms/preview/produk/{{$produk->id}}"
+                                                            href="/semaju/public/cms/preview/produk/{{$produk->id}}"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                         >

@@ -85,7 +85,7 @@
                             <div class="col-lg-4 col-md-12 text-center">
                                 <div class="testimonial-round d-inline-block">
                                     <img
-                                        src="/sumaju/storage/app/{{$data->img}}"
+                                        src="/semaju/storage/app/{{$data->img}}"
                                         alt=""
                                     />
                                 </div>

@@ -273,7 +273,7 @@
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/sumaju/storage/app/{{$partner ->logo_partner}}"
+                                                            src="/semaju/storage/app/{{$partner ->logo_partner}}"
                                                             width="150"
                                                         />
                                                     </td>

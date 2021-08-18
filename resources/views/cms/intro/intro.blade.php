@@ -166,7 +166,7 @@
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
                             <iframe
-                                src="/sumaju/public/cms/preview/intro"
+                                src="/semaju/public/cms/preview/intro"
                                 frameborder="0"
                                 width="100%"
                                 height="1000"

@@ -68,12 +68,12 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home') }}">
                         <img
-                            src="/sumaju/storage/app/{{ $dataPerusahaan->logo_small}}"
+                            src="/semaju/storage/app/{{ $dataPerusahaan->logo_small}}"
                             alt="logo"
                             class="logo-default"
                         />
                         <img
-                            src="/sumaju/storage/app/{{ $dataPerusahaan->logo_big}}"
+                            src="/semaju/storage/app/{{ $dataPerusahaan->logo_big}}"
                             alt="logo"
                             class="logo-scrolled"
                         />
@@ -644,7 +644,7 @@
         <br />
         @if($popup)
         <div class="popbox hide" id="popbox">	  <div aria-label='Close' class="pop-overlay" onclick='document.getElementById("popbox").style.display="none";removeClassonBody();'/>	  <div class="pop-content">		<a href="#" target="_blank" rel="noopener noreferrer" title="box"><br />
-            <div class="popcontent">			<img src="/sumaju/storage/app/{{$popup->img}}" alt="banner" width="850" height="450"/><br />
+            <div class="popcontent">			<img src="/semaju/storage/app/{{$popup->img}}" alt="banner" width="850" height="450"/><br />
             </div>		</a><br />
           <button aria-label='Close' class='popbox-close-button' onclick='document.getElementById("popbox").style.display="none";removeClassonBody();'>×</button><br />
         </div>	</div>@endif

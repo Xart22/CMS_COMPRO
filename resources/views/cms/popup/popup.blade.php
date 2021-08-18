@@ -98,7 +98,7 @@
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
                             <iframe
-                                src="/sumaju/public/"
+                                src="/semaju/public/"
                                 frameborder="0"
                                 width="100%"
                                 height="1000"

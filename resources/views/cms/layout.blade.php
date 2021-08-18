@@ -92,7 +92,7 @@
                             <div class="profile_pic">
                                 @if($dataPerusahaan)
                                 <img
-                                    src="/sumaju/storage/app/{{ $dataPerusahaan->logo_small }}"
+                                    src="/semaju/storage/app/{{ $dataPerusahaan->logo_small }}"
                                     alt="..."
                                     class="img-circle profile_img"
                                 />
@@ -270,7 +270,7 @@
                                     >
                                         @if($dataPerusahaan)
                                         <img
-                                            src="/sumaju/storage/app/{{$dataPerusahaan->logo_small}}"
+                                            src="/semaju/storage/app/{{$dataPerusahaan->logo_small}}"
                                             alt=""
                                         />
                                         @endif

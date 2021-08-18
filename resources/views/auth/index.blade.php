@@ -17,7 +17,7 @@
                 <div class="container">
                     @if($data)
                     <img
-                        src="/sumaju/storage/app/{{ $data->logo_small }}"
+                        src="/semaju/storage/app/{{ $data->logo_small }}"
                         alt=""
                     />
                     @endif

@@ -8,7 +8,7 @@
                 @foreach($slider as $slid)
                 <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-easein="Power100.easeInOut" data-easeout="Power100.easeInOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="01">
                     <!-- MAIN IMAGE -->
-                    <img src="/sumaju/storage/app/{{ $slid->img}}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    <img src="/semaju/storage/app/{{ $slid->img}}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -129,7 +129,7 @@
             <ul class="process-wrapp">
                 @foreach($partner as $part)
                 <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="/sumaju/storage/app/{{$part->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
+                    <img src="/semaju/storage/app/{{$part->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
                     <p class="fontbold bottom25"><h4>{{$part->nm_partner}}</h4></p>
                     <p class="mt-n2 mt-sm-0">{{$part->desc}}</p>
                 </li>
@@ -186,7 +186,7 @@
                         <div class="item">
                                 <div class="team-box">
                                         <div class="image">
-                                            <img src="/sumaju/storage/app/{{$pro->img_big_1}}" alt="">
+                                            <img src="/semaju/storage/app/{{$pro->img_big_1}}" alt="">
                                         </div>
                                         <div class="team-content">
                                             <h4 class="darkcolor">{{$pro->nm_prodok}} </h4>
@@ -273,7 +273,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-12 text-center">
                         <div class="testimonial-round d-inline-block">
-                            <img src="/sumaju/storage/app/{{$testi->img}}" alt="">
+                            <img src="/semaju/storage/app/{{$testi->img}}" alt="">
                         </div>
                         <h4 class="defaultcolor font-light top15"><a href="#.">{{$testi->nm}}</a></h4>
                         <p>{{$testi->negara}}</p>
@@ -296,50 +296,47 @@
 </section>
 <!--Testimonials Ends-->
 <!-- Contact US -->
-<section id="stayconnect" class="bglight position-relative">
-    <div class="container">
-        <div class="contactus-wrapp">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="heading-title wow fadeInUp text-center text-md-left" data-wow-delay="100ms">
-                        <h3 class="darkcolor bottom20">Stay Connected</h3>
-                    </div>
-                </div>
-                <div class="col-md-12 col-sm-12">
-                    <form class="getin_form wow fadeInUp" data-wow-delay="400ms" onsubmit="return false;">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12" id="result"></div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label for="userName" class="d-none"></label>
-                                    <input class="form-control" type="text" placeholder="Name" required id="userName" name="userName">
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label for="companyName" class="d-none"></label>
-                                    <input class="form-control" type="tel" placeholder="Company"  id="companyName" name="companyName">
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label for="email" class="d-none"></label>
-                                    <input class="form-control" type="email" placeholder="Email" required id="email" name="email">
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <button type="submit" class="button gradient-btn w-100" id="submit_btn">subscribe</button>
-                            </div>
-                        </div>
-                    </form>
+<section
+    id="our-feature"
+    class="single-feature padding_bottom padding_top_half mt-n4"
+>
+    <div class="container border p-3">
+        <h4 class="mb-1" style="text-align: center">Get Free Quote</h4>
+        <form class="row g-3" method="POST" action="{{ route('send_email') }}">
+            @csrf
+            <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Name</label>
+                <input type="text" class="form-control" name="form" />
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" />
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">No Telpon</label>
+                <input type="text" class="form-control" name="tlp" />
+            </div>
+            <div class="col-12 mt-2">
+                <div class="form-floating">
+                    <textarea
+                        name="text"
+                        class="form-control"
+                        placeholder="Leave a comment here"
+                        id="floatingTextarea2"
+                        style="height: 100px"
+                    ></textarea>
                 </div>
             </div>
-        </div>
+
+            <div class="container p-3">
+                <button type="submit" class="btn btn-primary w-100">
+                    Send
+                </button>
+            </div>
+        </form>
     </div>
+    <div class="container mt-2">{!!$dataPerusahaan->embeded_maps!!}</div>
 </section>
-<div class="container mt-5">
-    {!! htmlspecialchars_decode($dataPerusahaan->embeded_maps) !!}
-</div>
 <!-- Contact US ends -->
 @section('script')
 <script>
