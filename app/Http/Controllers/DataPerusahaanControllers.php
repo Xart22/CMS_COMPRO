@@ -111,24 +111,23 @@ class DataPerusahaanControllers extends Controller
      */
     public function update(Request $req, $id)
     {
-        if($req->file('logo_small')){
-
+        if($req->file('logo_small')&&$req->file('logo_big')){
         $small = $req->file('logo_small');
         $cek = getimagesize($small);
         $big = $req->file('logo_big');
         $cekBig = getimagesize($big);
         
         if($cekBig[0] != 800 && $cekBig[1] != 600){
-            return back()->with('fail','Size Resolution Should be
+            return back()->with('fail_big','Size Resolution Should be
             800px x 600px ')->withInput();
         }
         
         if($cek[0] != 200 && $cek[1] != 200){
-            return back()->with('fail','Size Resolution Should be
+            return back()->with('fail_small','Size Resolution Should be
             200px x 200px ')->withInput();
         }
         $logo_small = time().'_'. $small->getClientOriginalName();
-        $logo_big   =time().'_'. $big->getClientOriginalName();
+        $logo_big   = time().'_'. $big->getClientOriginalName();
         $width = str_replace('width="600"','width="100%"',$req->maps);
         DataPerusahaanModel::where('id',$id)->update([
             'nm_perusahaan'=>$req->nm_perusahaan,
@@ -144,7 +143,7 @@ class DataPerusahaanControllers extends Controller
         ]);
         Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
         Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
-        return redirect('cms/data-perusahaan');
+        return redirect('cms/data-perusahaan')->with(['success'=>'Success Updating Data']);
     }else{
         $width = str_replace('width="600"','width="100%"',$req->maps);
         DataPerusahaanModel::where('id',$id)->update([

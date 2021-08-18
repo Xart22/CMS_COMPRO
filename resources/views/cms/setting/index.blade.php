@@ -1,5 +1,7 @@
 @extends('cms.layout') @section('title','Intro')
-@section('header')@section('content')
+@section('header')
+
+@section('content')
 <div class="row">
     @if(Session::get('success'))
     <div class="alert alert-success w-25" role="alert">
@@ -394,20 +396,16 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <table class="table">
-                    <thead>
-                        <th>Logo Small</th>
-                        <th>Logo Big</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            @if(isset($data->logo_small)&&isset($data->logo_big))
-                            <td><img src="/semaju/storage/app/{{$data->logo_small}}" ></td>
-                            <td><img src="/semaju/storage/app/{{$data->logo_big}}"></td>
-                            @endif
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="container d-flex justify-content-around" id="logo">
+                    <div class="logo-small border">
+                        <h4 style="text-align: center;">Logo Small</h4>
+                        <img src="https://www.alurgerak.id/semaju/storage/app/{{$data->logo_small}}" >
+                    </div>
+                    <div class="logo-big border">
+                        <h4 style="text-align: center;">Logo Big</h4>
+                        <img src="https://www.alurgerak.id/semaju/storage/app/{{$data->logo_big}}" width="300">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -421,5 +419,21 @@
 function onnlyNum(value) {
   return /^\d*\.?\d*$/.test(value); 
 };
+
+function responClass(s) {
+        if (s.matches) {
+            $("#logo").removeClass("justify-content-around");
+            $('#logo').addClass('flex-column ')
+
+        } else {
+            $("#logo").addClass("justify-content-around");
+            $('#logo').removeClass('flex-column ')
+            
+        }
+    }
+
+    var s = window.matchMedia("(max-width: 375px)");
+    responClass(s);
+    s.addListener(responClass);
 </script>
 @endsection

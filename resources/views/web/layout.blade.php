@@ -68,12 +68,12 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home') }}">
                         <img
-                            src="/semaju/storage/app/{{ $dataPerusahaan->logo_small}}"
+                            src="https://www.alurgerak.id/semaju/storage/app/{{ $dataPerusahaan->logo_small}}"
                             alt="logo"
                             class="logo-default"
                         />
                         <img
-                            src="/semaju/storage/app/{{ $dataPerusahaan->logo_big}}"
+                            src="https://www.alurgerak.id/semaju/storage/app/{{ $dataPerusahaan->logo_big}}"
                             alt="logo"
                             class="logo-scrolled"
                         />
