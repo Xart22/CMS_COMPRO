@@ -43,7 +43,7 @@ class AuthControllers extends Controller
                $update = User::find($usr->id);
                $update->last_login = $date;
                $update->save();
-                return redirect('cms/dashboard');
+                return redirect('cms/');
             }else{
                return back()->with('fail','Wrong username or password');
             }

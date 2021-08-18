@@ -118,6 +118,12 @@
                                 <h3>General</h3>
                                 <ul class="nav side-menu">
                                     <li>
+                                        <a href="{{ route('dashboard') }}"
+                                            ><i class="fa fa-dashboard"></i>
+                                            Dashboard</a
+                                        >
+                                    </li>
+                                    <li>
                                         <a
                                             ><i class="fa fa-home"></i>Home
                                             <span

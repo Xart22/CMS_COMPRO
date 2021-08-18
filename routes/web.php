@@ -48,7 +48,7 @@ Route::get('/logout', [AuthControllers::class,'destroy'])->name('logout');
 
 Route::middleware(['CheckAuth'])->group(function (){
 
-    Route::get('/dashboard',[DashboardControllers::class,'index'])->name('dashboard');
+    Route::get('/',[DashboardControllers::class,'index'])->name('dashboard');
 
 
     //Slider FIX
