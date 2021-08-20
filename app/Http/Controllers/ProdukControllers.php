@@ -44,11 +44,6 @@ class ProdukControllers extends Controller
     public function store(Request $req)
     {   
         
-        $valid= $req->file('img');
-
-        if(count($valid) > 3){
-            return back()->with('fail','Maximum upload of 3 photos')->withInput();
-        }
         $get = ProdukModel::where('nm_produk',$req->nm_produk)->first();
         if(!empty($get)){
             return back()->with('nm','Name Produk Already Exist')->withInput();
@@ -67,6 +62,7 @@ class ProdukControllers extends Controller
             $cek = getimagesize($img[$i]);
             
             if($cek[0] != 400 && $cek[1] != 400){
+                ProdukModel::where('id',$data->id)->delete();
                 return back()->with('fail','Size Resolution Should be
                 400px x 400px ')->withInput();
             }
@@ -114,53 +110,35 @@ class ProdukControllers extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $req, $id)
-    {
-        
-        if(!empty($req->file('img'))){
-            $valid= $req->file('img');
+    {   
+        date_default_timezone_set('Asia/Jakarta');
+        $imgName = ['img_1','img_2','img_3'];
 
-        if(count($valid) > 3){
-            return back()->with('fail','Maximum upload of 3 photos')->withInput();
+        $data = ProdukModel::find($id);
+        foreach ($imgName as $img){
+            if ($req[$img]) {
+                if(getimagesize($req[$img])[0] != 400 && getimagesize($req[$img])[0] != 400){
+                    return back()->with('upload','Size Resolution Should be
+                    400px x 400px ')->withInput()->with('modalId',$id);
+                }
+                $nm = time().'_'. $req[$img]->getClientOriginalName();
+                $data[$img] = $this->PATH_FILE_DB.$nm;
+                Storage::putFileAs($this->PATH_FILE_DB, $req[$img], $nm);
+            }
+        }
+        $get = ProdukModel::where('nm_produk',$req->nm_produk)->first();
+        if (!empty($get)) {
+            if ($get->id != $id) {
+                return back()->with('exist','Name Product Already Exist ')->withInput()->with('modalId',$id);
+            } 
         }
 
-        date_default_timezone_set('Asia/Jakarta');
-        $data = ProdukModel::find($id);
         $data->nm_produk = $req->nm_produk;
         $data->spec = $req->spec;
         $data->desc=$req->desc;
         $data->save();
 
-
-        for ($i=0; $i <count($req->img) ; $i++) { 
-            $img = $req->file('img');
-            $cek = getimagesize($img[$i]);
-            
-            if($cek[0] != 400 && $cek[1] != 400){
-                return back()->with('modal_fail','Size Resolution Should be
-                400px x 400px ')->withInput();
-            }
-            $get = ProdukModel::where('nm_partner',$req->nm_partner)->first();
-            if(!empty($get)){
-                return back()->with('nm','Name Produk Already Exist')->withInput();
-            }
-            $nm = time().'_'. $img[$i]->getClientOriginalName();
-
-            DB::table('produk')->where('id',$req->id)->update([
-                'img_big_'.$i+1=>$this->PATH_FILE_DB.$nm
-            ]);
-            Storage::putFileAs($this->PATH_FILE_DB, $img[$i], $nm);
-        }
         return redirect('/cms/produk')->with(['success'=>'Success Updating Product']);
-
-        }else{
-            date_default_timezone_set('Asia/Jakarta');
-            $data = ProdukModel::find($id);
-            $data->nm_produk = $req->nm_produk;
-            $data->spec = $req->spec;
-            $data->desc=$req->desc;
-            $data->save();
-            return redirect('/cms/produk')->with(['success'=>'Success Updating Product']);
-        }
         
     }
 

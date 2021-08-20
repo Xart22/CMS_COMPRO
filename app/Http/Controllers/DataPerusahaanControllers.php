@@ -17,8 +17,8 @@ class DataPerusahaanControllers extends Controller
     public function index()
     {
         $dataPerusahaan = DataPerusahaanModel::first();
-        view()->share('dataPerusahaan',$dataPerusahaan);
-        return view('cms.setting.index',['data'=>DataPerusahaanModel::first()]);
+        view()->share('dataPerusahaan', $dataPerusahaan);
+        return view('cms.setting.index', ['data' => DataPerusahaanModel::first()]);
     }
 
     /**
@@ -38,46 +38,46 @@ class DataPerusahaanControllers extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $req)
-    {   
+    {
         date_default_timezone_set('Asia/Jakarta');
         $small = $req->file('logo_small');
         $cek = getimagesize($small);
         $big = $req->file('logo_big');
         $cekBig = getimagesize($big);
-        
-        if($cek[0] != 200 && $cek[1] != 200){
-            if($cekBig[0] != 800 && $cekBig[1] != 600){
-                return back()->with('fail_big','Size Resolution Should be
-                800px x 600px ')->withInput()->with('fail_small','Size Resolution Should be
+
+        if ($cek[0] != 200 && $cek[1] != 200) {
+            if ($cekBig[0] != 800 && $cekBig[1] != 600) {
+                return back()->with('fail_big', 'Size Resolution Should be
+                800px x 600px ')->withInput()->with('fail_small', 'Size Resolution Should be
                 200px x 200px ');
             }
         }
-        if($cekBig[0] != 800 && $cekBig[1] != 600){
-            return back()->with('fail_big','Size Resolution Should be
+        if ($cekBig[0] != 800 && $cekBig[1] != 600) {
+            return back()->with('fail_big', 'Size Resolution Should be
             800px x 600px ')->withInput();
         }
-        
-        
-        $logo_small = time().'_'. $small->getClientOriginalName();
-        $logo_big   =time().'_'. $big->getClientOriginalName();
 
-        $width = str_replace('width="600"','width="100%"',$req->maps);
+
+        $logo_small = time() . '_' . $small->getClientOriginalName();
+        $logo_big   = time() . '_' . $big->getClientOriginalName();
+
+        $width = str_replace('width="600"', 'width="100%"', $req->maps);
 
         DataPerusahaanModel::insert([
-            'nm_perusahaan'=>$req->nm_perusahaan,
-            'alamat'=>$req->alamat,
-            'embeded_maps'=>$req->$width,
-            'no_telp'=>$req->no_tlp,
-            'no_wa'=>$req->no_wa,
-            'email'=>$req->email,
-            'hari_operasional'=>$req->hari,
-            'jam_operasional'=>$req->jam,
-            'logo_small'=>$this->PATH_FILE_DB.$logo_small,
-            'logo_big'=>$this->PATH_FILE_DB.$logo_big
+            'nm_perusahaan' => $req->nm_perusahaan,
+            'alamat' => $req->alamat,
+            'embeded_maps' => $req->$width,
+            'no_telp' => $req->no_tlp,
+            'no_wa' => $req->no_wa,
+            'email' => $req->email,
+            'hari_operasional' => $req->hari,
+            'jam_operasional' => $req->jam,
+            'logo_small' => $this->PATH_FILE_DB . $logo_small,
+            'logo_big' => $this->PATH_FILE_DB . $logo_big
         ]);
         Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
         Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
-        return redirect('cms/data-perusahaan')->with(['success'=>'Success Adding Data']);
+        return redirect('cms/data-perusahaan')->with(['success' => 'Success Adding Data']);
     }
 
     /**
@@ -111,53 +111,61 @@ class DataPerusahaanControllers extends Controller
      */
     public function update(Request $req, $id)
     {
-        if($req->file('logo_small')&&$req->file('logo_big')){
-        $small = $req->file('logo_small');
-        $cek = getimagesize($small);
-        $big = $req->file('logo_big');
-        $cekBig = getimagesize($big);
-        
-        if($cekBig[0] != 800 && $cekBig[1] != 600){
-            return back()->with('fail_big','Size Resolution Should be
-            800px x 600px ')->withInput();
-        }
-        
-        if($cek[0] != 200 && $cek[1] != 200){
-            return back()->with('fail_small','Size Resolution Should be
+        $update = DataPerusahaanModel::where('id', $id)->first();
+        if ($req->file('logo_small')) {
+            $small = $req->file('logo_small');
+            $cek = getimagesize($small);
+            if ($cek[0] != 200 && $cek[1] != 200) {
+                return back()->with('fail_small', 'Size Resolution Should be
             200px x 200px ')->withInput();
+            }
+
+            $logo_small = time() . '_' . $small->getClientOriginalName();
+            $width = str_replace('width="600"', 'width="100%"', $req->maps);
+            $update->nm_perusahaan = $req->nm_perusahaan;
+            $update->alamat = $req->alamat;
+            $update->embeded_maps = $width;
+            $update->no_telp = $req->no_tlp;
+            $update->no_wa = $req->no_wa;
+            $update->hari_operasional = $req->hari;
+            $update->jam_operasional = $req->jam;
+            $update->logo_small = $this->PATH_FILE_DB . $logo_small;
+            $update->save();
+            Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
+            return redirect('cms/data-perusahaan')->with(['success' => 'Success Updating Data']);
+        } elseif ($req->file('logo_big')) {
+            $big = $req->file('logo_big');
+            $cek = getimagesize($big);
+            if ($cek[0] != 800 && $cek[1] != 600) {
+                return back()->with('fail_big', 'Size Resolution Should be
+            800px x 600px ')->withInput();
+            }
+            $logo_big   = time() . '_' . $big->getClientOriginalName();
+            $width = str_replace('width="600"', 'width="100%"', $req->maps);
+            $update->nm_perusahaan = $req->nm_perusahaan;
+            $update->alamat = $req->alamat;
+            $update->embeded_maps = $width;
+            $update->no_telp = $req->no_tlp;
+            $update->no_wa = $req->no_wa;
+            $update->hari_operasional = $req->hari;
+            $update->jam_operasional = $req->jam;
+            $update->logo_big = $this->PATH_FILE_DB . $logo_big;
+            $update->save();
+            Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
+            return redirect('cms/data-perusahaan')->with(['success' => 'Success Updating Data']);
         }
-        $logo_small = time().'_'. $small->getClientOriginalName();
-        $logo_big   = time().'_'. $big->getClientOriginalName();
-        $width = str_replace('width="600"','width="100%"',$req->maps);
-        DataPerusahaanModel::where('id',$id)->update([
-            'nm_perusahaan'=>$req->nm_perusahaan,
-            'alamat'=>$req->alamat,
-            'embeded_maps'=>$width,
-            'no_telp'=>$req->no_tlp,
-            'no_wa'=>$req->no_wa,
-            'email'=>$req->email,
-            'hari_operasional'=>$req->hari,
-            'jam_operasional'=>$req->jam,
-            'logo_small'=>$this->PATH_FILE_DB.$logo_small,
-            'logo_big'=>$this->PATH_FILE_DB.$logo_big
+        $width = str_replace('width="600"', 'width="100%"', $req->maps);
+        DataPerusahaanModel::where('id', $id)->update([
+            'nm_perusahaan' => $req->nm_perusahaan,
+            'alamat' => $req->alamat,
+            'embeded_maps' => $width,
+            'no_telp' => $req->no_tlp,
+            'no_wa' => $req->no_wa,
+            'email' => $req->email,
+            'hari_operasional' => $req->hari,
+            'jam_operasional' => $req->jam
         ]);
-        Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
-        Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
-        return redirect('cms/data-perusahaan')->with(['success'=>'Success Updating Data']);
-    }else{
-        $width = str_replace('width="600"','width="100%"',$req->maps);
-        DataPerusahaanModel::where('id',$id)->update([
-            'nm_perusahaan'=>$req->nm_perusahaan,
-            'alamat'=>$req->alamat,
-            'embeded_maps'=>$width,
-            'no_telp'=>$req->no_tlp,
-            'no_wa'=>$req->no_wa,
-            'email'=>$req->email,
-            'hari_operasional'=>$req->hari,
-            'jam_operasional'=>$req->jam
-        ]);
-        return redirect('cms/data-perusahaan')->with(['success'=>'Success Updating Data']);
-    }
+        return redirect('cms/data-perusahaan')->with(['success' => 'Success Updating Data']);
     }
 
     /**

@@ -75,12 +75,14 @@
                     </thead>
                     <tbody>
                         @foreach($inbox as $in)
-                        <td>{{$in->id}}</td>
-                        <td>{{$in->form}}</td>
-                        <td>{{$in->email}}</td>
-                        <td>{{$in->no_telp}}</td>
-                        <td>{{$in->message}}</td>
-                        <td>{{$in->created_at}}</td>
+                        <tr>
+                            <td>{{$in->id}}</td>
+                            <td>{{$in->form}}</td>
+                            <td>{{$in->email}}</td>
+                            <td>{{$in->no_telp}}</td>
+                            <td>{{$in->message}}</td>
+                            <td>{{$in->created_at}}</td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

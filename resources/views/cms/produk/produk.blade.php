@@ -39,6 +39,7 @@
     }}"
     rel="stylesheet"
 />
+<link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" />
 
 @endsection @section('content')
 <div class="row">
@@ -68,10 +69,9 @@
                     action="{{ route('create_produk') }}"
                     method="POST"
                     enctype="multipart/form-data"
+                    onsubmit="validate()"
                 >
                     @csrf
-
-                    <span class="section">Personal Info</span>
                     <div class="field item form-group">
                         <label
                             class="col-form-label col-md-3 col-sm-3 label-align"
@@ -95,6 +95,7 @@
                                 class="form-control"
                                 name="nm_produk"
                                 required
+                                value="{{ old('nm_produk') }}"
                             />
                         </div>
                         @endif
@@ -138,35 +139,88 @@
                         >
                         @if(Session::get('fail'))
                         <div class="col-md-6 col-sm-6 bad">
-                            <input
-                                class="form-control"
-                                type="file"
-                                name="img[]"
-                                required="required"
-                                accept="image/png, image/jpeg"
-                                multiple
-                            />
+                            <div class="d-flex justify-content-around">
+                                <div class="square fail">
+                                    <span>+</span>
+                                    <input
+                                        type="file"
+                                        name="img[]"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                    <img src="" alt="" class="kotak hidden" />
+                                </div>
+                                <div class="square fail">
+                                    <span>+</span>
+                                    <input
+                                        type="file"
+                                        name="img[]"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                    <img src="" alt="" class="kotak hidden" />
+                                </div>
+                                <div class="square fail">
+                                    <span>+</span>
+                                    <input
+                                        type="file"
+                                        name="img[]"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                    <img src="" alt="" class="kotak hidden" />
+                                </div>
+                            </div>
                             <div class="text-danger">
                                 {{Session::get('fail') }}
                             </div>
                         </div>
                         @else
                         <div class="col-md-6 col-sm-6">
-                            <input
-                                class="form-control"
-                                type="file"
-                                name="img[]"
-                                required="required"
-                                accept="image/png, image/jpeg"
-                                multiple
-                            />
+                            <div class="d-flex justify-content-around">
+                                <div class="square">
+                                    <span>+</span>
+                                    <input
+                                        type="file"
+                                        name="img[]"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                    <img src="" alt="" class="kotak hidden" />
+                                </div>
+                                <div class="square">
+                                    <span>+</span>
+                                    <input
+                                        type="file"
+                                        name="img[]"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                    <img src="" alt="" class="kotak hidden" />
+                                </div>
+                                <div class="square">
+                                    <span>+</span>
+                                    <input
+                                        type="file"
+                                        name="img[]"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                    <img src="" alt="" class="kotak hidden" />
+                                </div>
+                            </div>
                             <div class="text-muted">
                                 For Best Image Quality Resolution Should be
                                 400px x 400px
                             </div>
-
-                            @endif
                         </div>
+                        @endif
                     </div>
 
                     <div class="ln_solid">
@@ -267,22 +321,28 @@
                                                         {{$produk->desc}}
                                                     </td>
                                                     <td>
+                                                        @if( $produk->img_1)
                                                         <img
-                                                            src="/semaju/storage/app/{{$produk->img_big_1}}"
+                                                            src="/semaju/storage/app/{{$produk->img_1}}"
                                                             width="200"
                                                         />
+                                                        @endif
                                                     </td>
                                                     <td>
+                                                        @if($produk->img_2)
                                                         <img
-                                                            src="/semaju/storage/app/{{$produk->img_big_2}}"
+                                                            src="/semaju/storage/app/{{$produk->img_2}}"
                                                             width="200"
                                                         />
+                                                        @endif
                                                     </td>
                                                     <td>
+                                                        @if($produk->img_3)
                                                         <img
-                                                            src="/semaju/storage/app/{{$produk->img_big_3}}"
+                                                            src="/semaju/storage/app/{{$produk->img_3}}"
                                                             width="200"
                                                         />
+                                                        @endif
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
@@ -371,7 +431,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Edit Slider
+                    Edit Product
                     {{$d->nm_produk}}
                 </h5>
                 <button
@@ -396,6 +456,23 @@
                             for="first-name"
                             >Name Product
                         </label>
+                        @if(Session::get('exist'))
+                        <div class="col-md-10 col-sm-10 bad">
+                            <input
+                                class="form-control"
+                                name="nm_produk"
+                                required
+                                value="{{ old('nm_produk') }}"
+                            />
+                            <div
+                                class="text-danger"
+                                id="txtMdl{{$d->id}}"
+                                style="display: none"
+                            >
+                                {{Session::get('exist') }}
+                            </div>
+                        </div>
+                        @else
                         <div class="col-md-10 col-sm-10">
                             <input
                                 class="form-control"
@@ -404,6 +481,7 @@
                                 value="{{ $d->nm_produk }}"
                             />
                         </div>
+                        @endif
                     </div>
                     <div class="item form-group">
                         <label
@@ -437,41 +515,174 @@
                             >
                         </div>
                     </div>
-                    <div class="item form-group">
+                    <div class="field item form-group">
                         <label
                             class="col-form-label col-md-1 col-sm-1 label-align"
                             >Image Product
                             <span class="required">*</span></label
                         >
                         @if(Session::get('modal_fail'))
-                        <div class="col-md-10 col-sm-10 bad">
-                            <input
-                                class="form-control"
-                                type="file"
-                                name="img[]"
-                                accept="image/png, image/jpeg"
-                                multiple
-                            />
-                            <div class="text-danger">
-                                {{Session::get('modal_fail') }}
-                            </div>
-                        </div>
-                        @else
                         <div class="col-md-10 col-sm-10">
-                            <input
-                                class="form-control"
-                                type="file"
-                                name="img[]"
-                                accept="image/png, image/jpeg"
-                                multiple
-                            />
+                            <div class="d-flex justify-content-around">
+                                <div class="fail">
+                                    <span class="hidden">+</span>
+                                    @if($d->img_1)
+                                    <img
+                                        src="/semaju/storage/app/{{$d->img_1}}"
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />
+                                    @else
+                                    <img
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />@endif
+                                    <input
+                                        type="file"
+                                        name="img_1"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                </div>
+                                <div class="fail">
+                                    <span class="hidden">+</span>
+                                    @if($d->img_2)
+                                    <img
+                                        src="/semaju/storage/app/{{$d->img_2}}"
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />
+                                    @else
+                                    <img
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />@endif
+                                    <input
+                                        type="file"
+                                        name="img_2"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                </div>
+                                <div class="fail">
+                                    <span class="hidden">+</span>
+                                    @if($d->img_3)
+                                    <img
+                                        src="/semaju/storage/app/{{$d->img_3}}"
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />
+                                    @else
+                                    <img
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />@endif
+                                    <input
+                                        type="file"
+                                        name="img_3"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                </div>
+                            </div>
                             <div class="text-muted">
                                 For Best Image Quality Resolution Should be
                                 400px x 400px
                             </div>
-
+                        </div>
+                        @else
+                        <div class="col-md-10 col-sm-10">
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <span class="hidden">+</span>
+                                    @if($d->img_1)
+                                    <img
+                                        src="/semaju/storage/app/{{$d->img_1}}"
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />
+                                    @else
+                                    <img
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />@endif
+                                    <input
+                                        type="file"
+                                        name="img_1"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                </div>
+                                <div>
+                                    <span class="hidden">+</span>
+                                    @if($d->img_2)
+                                    <img
+                                        src="/semaju/storage/app/{{$d->img_2}}"
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />
+                                    @else
+                                    <img
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />@endif
+                                    <input
+                                        type="file"
+                                        name="img_2"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                </div>
+                                <div>
+                                    <span class="hidden">+</span>
+                                    @if($d->img_3)
+                                    <img
+                                        src="/semaju/storage/app/{{$d->img_3}}"
+                                        alt=""
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />
+                                    @else
+                                    <img
+                                        class="kotak"
+                                        onclick="changeImg(this)"
+                                    />@endif
+                                    <input
+                                        type="file"
+                                        name="img_3"
+                                        class="hidden"
+                                        accept="image/png, image/jpeg"
+                                        onchange="render(this)"
+                                    />
+                                </div>
+                            </div>
+                            @if(Session::get('upload'))
+                            <div
+                                class="text-danger"
+                                id="text{{$d->id}}"
+                                style="display: none"
+                            >
+                                {{Session::get('upload') }}
+                            </div>
+                            @else
+                            <div class="text-muted">
+                                For Best Image Quality Resolution Should be
+                                400px x 400px
+                            </div>
                             @endif
                         </div>
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button
@@ -609,11 +820,36 @@
         $("#slidertable").DataTable();
         $(".alert").fadeOut(3000);
     });
+    $(".square span").on("click", function () {
+        $(this).next().click();
+    });
+    function render(val) {
+        const [file] = val.files;
+        $(val).closest("img").attr("src", URL.createObjectURL(file));
+        $(val).siblings("img").attr("src", URL.createObjectURL(file));
+        $(val).siblings("img").removeClass("hidden");
+        $(val).siblings("span").hide();
+        $(val).parent(".square").css("padding", "0");
+        $(val).parent(".square").css("border", "none");
+        $(val).parent(".square").css("background-color", "none");
+    }
+    function changeImg(ef) {
+        $(ef).next().click();
+    }
 </script>
+
 @if(Session::get('modalId'))
 <script>
     $(function () {
         $("#modal{{Session::get('modalId')}}").modal("show");
+        $("#text{{Session::get('modalId')}}").show();
+    });
+</script>
+@endif @if(Session::get('exist'))
+<script>
+    $(function () {
+        $("#modal{{Session::get('modalId')}}").modal("show");
+        $("#txtMdl{{Session::get('modalId')}}").show();
     });
 </script>
 @endif @endsection

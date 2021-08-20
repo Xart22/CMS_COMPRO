@@ -282,7 +282,6 @@
                                 class="form-control"
                                 type="file"
                                 name="logo_small"
-                                required="required"
                                 accept="image/png, image/jpeg"
                             />
                             <div class="text-danger">
@@ -329,7 +328,6 @@
                                 class="form-control"
                                 type="file"
                                 name="logo_big"
-                                required="required"
                                 accept="image/png, image/jpeg"
                             />
                             <div class="text-danger">
@@ -399,11 +397,11 @@
                 <div class="container d-flex justify-content-around" id="logo">
                     <div class="logo-small border">
                         <h4 style="text-align: center;">Logo Small</h4>
-                        <img src="https://www.alurgerak.id/semaju/storage/app/{{$data->logo_small}}" >
+                        <img src="/semaju/storage/app/{{$data->logo_small}}" >
                     </div>
                     <div class="logo-big border">
                         <h4 style="text-align: center;">Logo Big</h4>
-                        <img src="https://www.alurgerak.id/semaju/storage/app/{{$data->logo_big}}" width="300">
+                        <img src="/semaju/storage/app/{{$data->logo_big}}" width="300">
                     </div>
                 </div>
             </div>

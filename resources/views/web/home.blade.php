@@ -129,7 +129,7 @@
             <ul class="process-wrapp">
                 @foreach($partner as $part)
                 <li class="whitecolor wow fadeIn" data-wow-delay="100ms">
-                    <img src="/semaju/storage/app/{{$part->logo_partner}}" width="200" class="rounded-circle" alt="" srcset="">
+                    <img src="/semaju/storage/app/{{$part->logo_partner}}" width="80" class="rounded-circle" alt="" srcset="">
                     <p class="fontbold bottom25"><h4>{{$part->nm_partner}}</h4></p>
                     <p class="mt-n2 mt-sm-0">{{$part->desc}}</p>
                 </li>
