@@ -299,7 +299,7 @@
                                     >
                                         <a
                                             class="dropdown-item"
-                                            href="javascript:;"
+                                            href="{{ route('edit_acc') }}"
                                         >
                                             Change Password</a
                                         >

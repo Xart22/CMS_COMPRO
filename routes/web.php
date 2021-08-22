@@ -32,7 +32,7 @@ Route::get('/', [allControllers::class,'index'])->name('home');
 Route::get('/about', [allControllers::class,'about'])->name('about');
 Route::get('/product/{id}',[allControllers::class,'showProduk'])->name('produk_view');
 Route::get('/contact',[allControllers::class,'contact'])->name('contact_view');
-Route::get('/prekerjaan/{id}',[allControllers::class,'contact'])->name('pekerjaan_view');
+Route::get('/perkerjaan/{id}',[allControllers::class,'showPekerjaan'])->name('pekerjaan_view');
 Route::post('/send',[allControllers::class,'send'])->name('send_email');
 
 
@@ -50,6 +50,8 @@ Route::get('/logout', [AuthControllers::class,'destroy'])->name('logout');
 Route::middleware(['CheckAuth'])->group(function (){
 
     Route::get('/',[DashboardControllers::class,'index'])->name('dashboard');
+    Route::get('/change-password',[DashboardControllers::class,'edit'])->name('edit_acc');
+    Route::post('/change-password{id}',[DashboardControllers::class,'update'])->name('change_pass');
 
 
     //Slider FIX

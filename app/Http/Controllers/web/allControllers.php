@@ -72,6 +72,14 @@ class allControllers extends Controller
         );
     }
 
+    public function showPekerjaan($id)
+    {   
+        $produk = ProdukModel::get();
+        view()->share('produk', $produk);
+        return view('web.pekerjaan', ['data' => PekerjaanModel::find($id), 'dataPerusahaan' => DataPerusahaanModel::first(), 'social' => SocialModel::first(), 'popup' => PopupModel::first(), 'slider' => SliderModel::get()]);
+
+    }
+
 
     public function showProduk($id)
     {

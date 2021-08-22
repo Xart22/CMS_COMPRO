@@ -166,171 +166,13 @@
                                     class="collapse sideNavPages"
                                 >
                                     <ul class="navbar-nav mt-2">
+                                        @foreach($produk as $pro)
                                         <li class="nav-item">
-                                            <a class="nav-link" href="team.html"
-                                                >Our Team</a
+                                            <a class="nav-link" href="{{route('produk_view',$pro->id)}}"
+                                                >{{$pro->nm_produk}}</a
                                             >
                                         </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="services.html"
-                                                >Service</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="services-detail.html"
-                                                >Service Detail</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="testimonial.html"
-                                                >Testimonials</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="gallery.html"
-                                                >Gallery</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="gallery-detail.html"
-                                                >Gallery Detail</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="pricing.html"
-                                                >Pricing</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="faq.html"
-                                                >FAQ's</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="404.html"
-                                                >Error 404</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="coming-soon.html"
-                                                >Coming Soon</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="
-                                                    nav-link
-                                                    collapsePagesSideMenu
-                                                "
-                                                data-toggle="collapse"
-                                                href="#inner-2"
-                                            >
-                                                Account
-                                                <i
-                                                    class="fas fa-chevron-down"
-                                                ></i>
-                                            </a>
-                                            <div
-                                                id="inner-2"
-                                                class="
-                                                    collapse
-                                                    sideNavPages
-                                                    sideNavPagesInner
-                                                "
-                                            >
-                                                <ul class="navbar-nav mt-2">
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="login.html"
-                                                            >Login</a
-                                                        >
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="register.html"
-                                                            >Register</a
-                                                        >
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="forget-password.html"
-                                                            >Forget Password</a
-                                                        >
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="support.html"
-                                                            >Support</a
-                                                        >
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="
-                                                    nav-link
-                                                    collapsePagesSideMenu
-                                                "
-                                                data-toggle="collapse"
-                                                href="#inner-1"
-                                            >
-                                                Shops
-                                                <i
-                                                    class="fas fa-chevron-down"
-                                                ></i>
-                                            </a>
-                                            <div
-                                                id="inner-1"
-                                                class="
-                                                    collapse
-                                                    sideNavPages
-                                                    sideNavPagesInner
-                                                "
-                                            >
-                                                <ul class="navbar-nav mt-2">
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="shop.html"
-                                                            >Shop Products</a
-                                                        >
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="shop-detail.html"
-                                                            >Shop Detail</a
-                                                        >
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a
-                                                            class="nav-link"
-                                                            href="shop-cart.html"
-                                                            >Shop Cart</a
-                                                        >
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </li>
@@ -342,6 +184,11 @@
                             <li class="nav-item">
                                 <a class="nav-link"href="{{route('contact_view')}}"
                                     >Contact</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"href="{{route('dashboard')}}"
+                                    >Login</a
                                 >
                             </li>
                         </ul>
@@ -365,7 +212,7 @@
                             </li>
                         </ul>
                         <p class="whitecolor">
-                            &copy; <span id="year"></span> www.alurgerak.id
+                            <a href="https://www.alurgerak.id/"> www.alurgerak.id</a>
                         </p>
                     </div>
                 </div>
@@ -450,7 +297,7 @@
                             <h3 class="whitecolor bottom25">Useful Links</h3>
                             <ul class="latest_news whitecolor">
                                 <li>
-                                    <a href="#."> 
+                                    <a href="{{route('home')}}"> 
                                     <span class="date defaultcolor"
                                         >Home</span</a>
                                     
@@ -462,13 +309,13 @@
                                     > </a>
                                 </li>
                                 <li>
-                                    <a href="#.">
+                                    <a href="{{route('about')}}">
                                     <span class="date defaultcolor"
                                         >About</span
                                     ></a>
                                 </li>
                                 <li>
-                                    <a href="#.">
+                                    <a href="{{route('contact_view')}}">
                                     <span class="date defaultcolor"
                                         >Contact</span</a>
                                     

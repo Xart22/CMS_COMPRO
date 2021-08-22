@@ -84,7 +84,7 @@
                 <div class="item">
                     <div class="service-box">
                         <span class="bottom25"><i class="fa fa-home"></i></span>
-                        <h4 class="bottom10"><a href="javascript:void(0)">{{$dataPerusahaan->alamat}}</a></h4>
+                        <h4 class="bottom10"><a href="javascript:void(0)">{{$dataPerusahaan->nm_perusahaan}}</a></h4>
                         <p>{{$dataPerusahaan->alamat}}</p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 text-center">
                 <div class="heading-title whitecolor wow fadeInUp" data-wow-delay="100ms">
-                    <h2 class="font-normal">Our Authorized Parthner</h2>
+                    <h2 class="font-normal">Our Authorized Partner</h2>
                 </div>
             </div>
         </div>
@@ -227,7 +227,7 @@
                         @endif
                         <h3 class="font-light darkcolor">{{$pekerja->nm_pekerjaan}}</h3>
                         <p class="bottom30">{{$pekerja->desc}}</p>
-                        <a class="button" href="{{route('pekerjaan_view',$pekerja->nm_pekerjaan)}}">detail</a>
+                        <a class="button" href="{{route('pekerjaan_view',$pekerja->id)}}">detail</a>
                     </div>
                 </div>
             </div>
