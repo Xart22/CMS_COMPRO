@@ -84,7 +84,7 @@
                 <div class="item">
                     <div class="service-box">
                         <span class="bottom25"><i class="fa fa-home"></i></span>
-                        <h4 class="bottom10"><a href="javascript:void(0)">Komplek Adipura IV</a></h4>
+                        <h4 class="bottom10"><a href="javascript:void(0)">{{$dataPerusahaan->alamat}}</a></h4>
                         <p>{{$dataPerusahaan->alamat}}</p>
                     </div>
                 </div>
@@ -148,18 +148,18 @@
         <div class="row align-items-center text-center">
             <div class="col-lg-4 col-md-4 col-sm-4 bottom10">
                 <div class="counters whitecolor  top10 bottom10">
-                    <span class="count_nums font-light" data-to="2013" data-speed="2500"> </span>
+                    <span class="count_nums font-light" data-to="{{$dataPerusahaan->start_from}}" data-speed="2500"> </span>
                 </div>
                 <h3 class="font-light whitecolor top20">Since We Started</h3>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
-                <p class="whitecolor top20 bottom20 font-light title">To be able to provide services with the best quality and price, in this case our priority is our goal. In the field of Air Compressors and Air Dryer Units, Spare parts and Service.</p>
+                <p class="whitecolor top20 bottom20 font-light title">{{$dataPerusahaan->text_start}}</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 bottom10">
                 <div class="counters whitecolor top10 bottom10">
-                    <span class="count_nums font-light" data-to="999" data-speed="2500"> </span>
+                    <span class="count_nums font-light" data-to="{{$dataPerusahaan->project}}" data-speed="2500"> </span>
                 </div>
-                <h3 class="font-light whitecolor top20">Since We Started</h3>
+                <h3 class="font-light whitecolor top20">Projects Completed</h3>
             </div>
         </div>
     </div>
@@ -212,40 +212,26 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 text-center">
                 <div class="heading-title darkcolor wow fadeInUp" data-wow-delay="100ms">
-                    <span class="defaultcolor">PT. SEMAJU ELANG PUTRA </span>
-                    <h2 class="font-normal bottom40"> INFORMASI </h2>
+                    <span class="defaultcolor">{{$dataPerusahaan->nm_perusahaan}}</span>
                 </div>
             </div>
         </div>
         <div class="owl-carousel owl-theme no-dots" id="price-slider">
+            @foreach($pekerjaan as $pekerja)
             <div class="item">
                 <div class="col-md-12">
-                    <div class="pricing-item wow fadeInUp animated sale" data-wow-delay="100ms" data-sale="60">
-                        <h3 class="font-light darkcolor">ReTubing</h3>
-                        <p class="bottom30">Untuk perbaikan penggantian Cooler CENTAC kami lakukan Re-Tubing. Kami menyediakan produk tubing ORIGINAL dari EUROPE, dengan material Cooper dan CuNi rendah CTD dan kualitas tinggi.</p>
-                        <a class="button" href="javascript:void(0)">detail...</a>
+                    @if($pekerja->discount)
+                    <div class="pricing-item wow fadeInUp animated sale" data-wow-delay="100ms" data-sale="{{$pekerja->discount}}">
+                        @else
+                        <div class="pricing-item wow fadeInUp animated sale" data-wow-delay="100ms" data-sale="60">
+                        @endif
+                        <h3 class="font-light darkcolor">{{$pekerja->nm_pekerjaan}}</h3>
+                        <p class="bottom30">{{$pekerja->desc}}</p>
+                        <a class="button" href="{{route('pekerjaan_view',$pekerja->nm_pekerjaan)}}">detail</a>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                    <div class="col-md-12">
-                        <div class="pricing-item wow fadeInUp animated sale" data-wow-delay="100ms" data-sale="60">
-                            <h3 class="font-light darkcolor">Refurbished</h3>
-                            <p class="bottom30">Untuk Anda yang memiliki banyak waktu Refurbished adalah solusi terbaik untuk menekan biaya. Karena AirEnd akan kami kirim ke pusat AirHire untuk kami lakukan perbaikan dengan hati-hati dan terukur.</p>
-                            <a class="button" href="javascript:void(0)">detail...</a>
-                        </div>
-                    </div>
-            </div>
-            <div class="item">
-                        <div class="col-md-12">
-                            <div class="pricing-item wow fadeInUp animated sale" data-wow-delay="100ms" data-sale="60">
-                                <h3 class="font-light darkcolor">Overhaul</h3>
-                                <p class="bottom30">Kami dapat melaksanakan Service Overhaul Screw Air Compressors maupun Centrifugal Air Compressors. Di kerjakan oleh Tehnisi yang handal dan terpercaya sesuai ahlinya.</p>
-                                <a class="button" href="javascript:void(0)">detail...</a>
-                            </div>
-                        </div>
-            </div>
-        
+            @endforeach
         </div>
     </div>
 </section>

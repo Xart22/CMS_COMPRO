@@ -6,14 +6,13 @@ use App\Http\Controllers\DataPerusahaanControllers;
 use App\Http\Controllers\InboxControllers;
 use App\Http\Controllers\IntroControllers;
 use App\Http\Controllers\PartnerControllers;
+use App\Http\Controllers\PekerjaanControllers;
 use App\Http\Controllers\PopupControllers;
 use App\Http\Controllers\ProdukControllers;
 use App\Http\Controllers\SliderImageControllers;
 use App\Http\Controllers\SocialControllers;
 use App\Http\Controllers\TestimoniControllers;
 use App\Http\Controllers\web\allControllers;
-use App\Models\ProdukModel;
-use App\Models\SocialModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +32,9 @@ Route::get('/', [allControllers::class,'index'])->name('home');
 Route::get('/about', [allControllers::class,'about'])->name('about');
 Route::get('/product/{id}',[allControllers::class,'showProduk'])->name('produk_view');
 Route::get('/contact',[allControllers::class,'contact'])->name('contact_view');
+Route::get('/prekerjaan/{id}',[allControllers::class,'contact'])->name('pekerjaan_view');
 Route::post('/send',[allControllers::class,'send'])->name('send_email');
+
 
 
 
@@ -105,5 +106,15 @@ Route::middleware(['CheckAuth'])->group(function (){
 
     //Inbox
     Route::get('/inbox',[InboxControllers::class,'index'])->name('inbox');
+
+
+    //Pekerjaan
+    Route::get('/pekerjaan',[PekerjaanControllers::class,'index'])->name('pekerjaan');
+    Route::post('/create/pekerjaan',[PekerjaanControllers::class,'store'])->name('create_pekerjaan');
+    Route::get('/preview/pekerjaan/{id}',[PekerjaanControllers::class,'show'])->name('preview_pekerjaan');
+    Route::get('/edit/pekerjaan/{id}',[PekerjaanControllers::class,'edit'])->name('edit_pekerjaan');
+    Route::post('/update/pekerjaan/{id}',[PekerjaanControllers::class,'update'])->name('update_pekerjaan');
+    Route::get('/delete/pekerjaan/{id}',[PekerjaanControllers::class,'destroy'])->name('delete_pekerjaan');
+
 });
 });

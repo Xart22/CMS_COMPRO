@@ -44,6 +44,7 @@ class SocialControllers extends Controller
         $data->twiter = $req->tw;
         $data->instagram = $req->ig;
         $data->linkedin = $req->li;
+        $data->text_wa = $req->text_wa;
         $data->save();
         return redirect('cms/social')->with(['success'=>'Success Adding Social Media']);
 
@@ -86,6 +87,7 @@ class SocialControllers extends Controller
         $data->twiter = $req->tw;
         $data->instagram = $req->ig;
         $data->linkedin = $req->li;
+        $data->text_wa = $req->text_wa;
         $data->save();
         return redirect('cms/social')->with(['success'=>'Success Updating Social Media']);
 

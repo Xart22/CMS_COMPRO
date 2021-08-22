@@ -164,6 +164,14 @@
                                                     >Pop Up News</a
                                                 >
                                             </li>
+                                            <li class="">
+                                                <a
+                                                    href="{{
+                                                        route('pekerjaan')
+                                                    }}"
+                                                    >Info Pekerjaan</a
+                                                >
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>

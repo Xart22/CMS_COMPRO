@@ -1,7 +1,7 @@
 @extends('web.layout') @section('title','About') @section('header')
 @section('content')
 
-<div class="container" style="margin-top: 25rem">
+<div class="container" style="margin-top: 15rem">
     <div class="row">
         <div class="col-md-12">
             <div
@@ -40,7 +40,10 @@
                     <div class="service-box">
                         <span class="bottom25"><i class="fa fa-home"></i></span>
                         <h4 class="bottom10">
-                            <a href="javascript:void(0)">Komplek Adipura IV</a>
+                            <a
+                                href="javascript:void(0)"
+                                >{{$dataPerusahaan->nm_perusahaan}}</a
+                            >
                         </h4>
                         <p>{{$dataPerusahaan->alamat}}</p>
                     </div>

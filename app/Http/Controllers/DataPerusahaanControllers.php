@@ -72,6 +72,9 @@ class DataPerusahaanControllers extends Controller
             'email' => $req->email,
             'hari_operasional' => $req->hari,
             'jam_operasional' => $req->jam,
+            'start_from'=>$req->from,
+            'text_start'=>$req->text,
+            'project'=>$req->project,
             'logo_small' => $this->PATH_FILE_DB . $logo_small,
             'logo_big' => $this->PATH_FILE_DB . $logo_big
         ]);
@@ -129,6 +132,9 @@ class DataPerusahaanControllers extends Controller
             $update->no_wa = $req->no_wa;
             $update->hari_operasional = $req->hari;
             $update->jam_operasional = $req->jam;
+            $update->start_from = $req->from;
+            $update->project = $req->project;
+            $update->text_start = $req->text;
             $update->logo_small = $this->PATH_FILE_DB . $logo_small;
             $update->save();
             Storage::putFileAs($this->PATH_FILE_DB, $small, $logo_small);
@@ -149,6 +155,9 @@ class DataPerusahaanControllers extends Controller
             $update->no_wa = $req->no_wa;
             $update->hari_operasional = $req->hari;
             $update->jam_operasional = $req->jam;
+            $update->start_from = $req->from;
+            $update->project = $req->project;
+            $update->text_start = $req->text;
             $update->logo_big = $this->PATH_FILE_DB . $logo_big;
             $update->save();
             Storage::putFileAs($this->PATH_FILE_DB, $big, $logo_big);
@@ -162,6 +171,9 @@ class DataPerusahaanControllers extends Controller
             'no_telp' => $req->no_tlp,
             'no_wa' => $req->no_wa,
             'email' => $req->email,
+            'start_from'=>$req->from,
+            'text_start'=>$req->text,
+            'project'=>$req->project,
             'hari_operasional' => $req->hari,
             'jam_operasional' => $req->jam
         ]);

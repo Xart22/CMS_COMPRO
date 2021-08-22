@@ -7,6 +7,7 @@ use App\Models\DataPerusahaanModel;
 use App\Models\InboxModel;
 use App\Models\IntroModel;
 use App\Models\PartnerModel;
+use App\Models\PekerjaanModel;
 use App\Models\PopupModel;
 use App\Models\ProdukModel;
 use App\Models\SliderModel;
@@ -26,15 +27,22 @@ class allControllers extends Controller
         $popup = PopupModel::first();
         $social = SocialModel::first();
         $produk = ProdukModel::get();
-        view()->share('produk',$produk);
-        return view('web.home',
-        ['dataPerusahaan'=>$dataPerusahaan,
-         'slider'=>$slider,
-         'intro'=>$intro,
-         'partner'=>$partner,
-         'testimoni'=>$testi,
-         'popup'=>$popup,
-         'social'=>$social]);
+        $pekerjaan = PekerjaanModel::get();
+        view()->share('produk', $produk);
+        return view(
+            'web.home',
+            [
+                'dataPerusahaan' => $dataPerusahaan,
+                'slider' => $slider,
+                'intro' => $intro,
+                'partner' => $partner,
+                'testimoni' => $testi,
+                'popup' => $popup,
+                'social' => $social,
+                'pekerjaan'=> $pekerjaan
+
+            ]
+        );
     }
 
     public function about()
@@ -47,25 +55,29 @@ class allControllers extends Controller
         $popup = PopupModel::first();
         $social = SocialModel::first();
         $produk = ProdukModel::get();
-        view()->share('produk',$produk);
+        view()->share('produk', $produk);
 
 
-        return view('web.about',
-        ['dataPerusahaan'=>$dataPerusahaan,
-         'slider'=>$slider,
-         'intro'=>$intro,
-         'partner'=>$partner,
-         'testimoni'=>$testi,
-         'popup'=>$popup,
-         'social'=>$social]);
+        return view(
+            'web.about',
+            [
+                'dataPerusahaan' => $dataPerusahaan,
+                'slider' => $slider,
+                'intro' => $intro,
+                'partner' => $partner,
+                'testimoni' => $testi,
+                'popup' => $popup,
+                'social' => $social
+            ]
+        );
     }
 
 
     public function showProduk($id)
     {
         $produk = ProdukModel::get();
-        view()->share('produk',$produk);
-        return view('web.produk',['data'=>ProdukModel::find($id),'dataPerusahaan'=>DataPerusahaanModel::first(),'social'=>SocialModel::first(),'popup'=>PopupModel::first()]);
+        view()->share('produk', $produk);
+        return view('web.produk', ['data' => ProdukModel::find($id), 'dataPerusahaan' => DataPerusahaanModel::first(), 'social' => SocialModel::first(), 'popup' => PopupModel::first(), 'slider' => SliderModel::get()]);
     }
 
     public function contact()
@@ -78,30 +90,32 @@ class allControllers extends Controller
         $popup = PopupModel::first();
         $social = SocialModel::first();
         $produk = ProdukModel::get();
-        view()->share('produk',$produk);
+        view()->share('produk', $produk);
 
 
-        return view('web.contact',
-        ['dataPerusahaan'=>$dataPerusahaan,
-         'slider'=>$slider,
-         'intro'=>$intro,
-         'partner'=>$partner,
-         'testimoni'=>$testi,
-         'popup'=>$popup,
-         'social'=>$social]);
+        return view(
+            'web.contact',
+            [
+                'dataPerusahaan' => $dataPerusahaan,
+                'slider' => $slider,
+                'intro' => $intro,
+                'partner' => $partner,
+                'testimoni' => $testi,
+                'popup' => $popup,
+                'social' => $social
+            ]
+        );
     }
 
     public function send(Request $req)
     {
         $data = new InboxModel;
         $data->form = $req->form;
-        $data->email=$req->email;
-        $data->no_telp=$req->tlp;
-        $data->message=$req->text;
+        $data->email = $req->email;
+        $data->no_telp = $req->tlp;
+        $data->message = $req->text;
         $data->save();
 
         return redirect()->route('home');
     }
-
-
 }

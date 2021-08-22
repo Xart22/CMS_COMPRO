@@ -174,7 +174,7 @@
                                     <img src="" alt="" class="kotak hidden" />
                                 </div>
                             </div>
-                            <div class="text-danger">
+                            <div class="text-danger" style="text-align: center">
                                 {{Session::get('fail') }}
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                                     <img src="" alt="" class="kotak hidden" />
                                 </div>
                             </div>
-                            <div class="text-muted">
+                            <div class="text-muted" style="text-align: center">
                                 For Best Image Quality Resolution Should be
                                 400px x 400px
                             </div>
@@ -591,7 +591,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="text-muted">
+                            <div class="text-muted" style="text-align: center">
                                 For Best Image Quality Resolution Should be
                                 400px x 400px
                             </div>
@@ -671,12 +671,12 @@
                             <div
                                 class="text-danger"
                                 id="text{{$d->id}}"
-                                style="display: none"
+                                style="display: none; text-align: center"
                             >
                                 {{Session::get('upload') }}
                             </div>
                             @else
-                            <div class="text-muted">
+                            <div class="text-muted" style="text-align: center">
                                 For Best Image Quality Resolution Should be
                                 400px x 400px
                             </div>

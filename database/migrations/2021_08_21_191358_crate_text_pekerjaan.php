@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSocial extends Migration
+class CrateTextPekerjaan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateSocial extends Migration
      */
     public function up()
     {
-        Schema::create('social', function (Blueprint $table) {
+        Schema::create('text_pekerjaan', function (Blueprint $table) {
             $table->id();
-            $table->string('facebook');
-            $table->string('twiter');
-            $table->string('instagram');
-            $table->string('linkedin');
-            $table->string('text_wa');
+            $table->text('p');
+            $table->integer('pekerjaan_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateSocial extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social');
+        Schema::dropIfExists('text_pekerjaan');
     }
 }

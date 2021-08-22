@@ -86,7 +86,7 @@
                             font-size: medium;
                             margin-left: 20px;
                         "
-                        >PT. SEMAJU ELANG PUTRA</span
+                        > {{$dataPerusahaan->nm_perusahaan}}</span
                     >
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-auto">
@@ -447,29 +447,35 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="footer_panel padding_bottom_half bottom20">
-                            <h3 class="whitecolor bottom25">Latest News</h3>
+                            <h3 class="whitecolor bottom25">Useful Links</h3>
                             <ul class="latest_news whitecolor">
                                 <li>
-                                    <a href="#.">Info 1 </a>
+                                    <a href="#."> 
                                     <span class="date defaultcolor"
-                                        >15 March 2019</span
-                                    >
+                                        >Home</span</a>
+                                    
                                 </li>
                                 <li>
-                                    <a href="#.">Info 2 </a>
+                                    <a href="#.">
                                     <span class="date defaultcolor"
-                                        >15 March 2019</span
-                                    >
+                                        >Products</span
+                                    > </a>
                                 </li>
                                 <li>
-                                    <a href="#.">Info 3 </a>
+                                    <a href="#.">
                                     <span class="date defaultcolor"
-                                        >15 March 2019</span
-                                    >
+                                        >About</span
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href="#.">
+                                    <span class="date defaultcolor"
+                                        >Contact</span</a>
+                                    
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div
                             class="
@@ -511,7 +517,7 @@
             </div>
             <div class="floatwa">
                 <a
-                    href="https://api.whatsapp.com/send?phone=6281319378284&amp;text=Halo%20Semaju,%20Boleh%20kami%20dibantu"
+                    href="https://api.whatsapp.com/send?phone={{$dataPerusahaan->no_wa}}&amp;text={{$social->text_wa}}"
                     target="_blank"
                     ><div class="tombolwa">KAMI VIA WHATSAPP</div></a
                 >
@@ -520,10 +526,6 @@
 
         <br />
         <br />
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
-            async
-        ></script>
         <style>
             #map {
                 height: 400px;

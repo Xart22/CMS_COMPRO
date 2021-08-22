@@ -1,7 +1,13 @@
-@extends('web.layout') @section('title','Contact') @section('header')
-@section('content')
+@extends('web.layout') @section('title','Produk') @section('header')
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ asset('assets/css/jquery.spzoom.css') }}"
+/>
 
-<div class="container" style="margin-top: 25rem">
+@endsection @section('content')
+
+<div class="container" style="margin-top: 18rem">
     <div class="row">
         <div class="col-md-12">
             <div
@@ -42,7 +48,7 @@
                         <h4 class="bottom10">
                             <a
                                 href="javascript:void(0)"
-                                >{{$dataPerusahaan->alamat}}</a
+                                >{{$dataPerusahaan->nm_perusahaan}}</a
                             >
                         </h4>
                         <p>{{$dataPerusahaan->alamat}}</p>
@@ -52,53 +58,71 @@
         </div>
     </div>
 </div>
-
 <section
     id="our-feature"
     class="single-feature padding_bottom padding_top_half mt-n4"
 >
-    <div class="container border p-3">
-        <h4 class="mb-1" style="text-align: center">Get Free Quote</h4>
-        <form class="row g-3" method="POST" action="{{ route('send_email') }}">
-            @csrf
-            <div class="col-md-4">
-                <label for="inputEmail4" class="form-label">Name</label>
-                <input type="text" class="form-control" name="form" />
-            </div>
-            <div class="col-md-4">
-                <label for="inputPassword4" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" />
-            </div>
-            <div class="col-md-4">
-                <label for="inputPassword4" class="form-label">No Telpon</label>
-                <input type="text" class="form-control" name="tlp" />
-            </div>
-            <div class="col-12 mt-2">
-                <div class="form-floating">
-                    <textarea
-                        name="text"
-                        class="form-control"
-                        placeholder="Leave a comment here"
-                        id="floatingTextarea2"
-                        style="height: 100px"
-                    ></textarea>
-                </div>
-            </div>
-
-            <div class="container p-3">
-                <button type="submit" class="btn btn-primary w-100">
-                    Send
-                </button>
-            </div>
-        </form>
+    <div class="container mb-3" style="border-bottom: 1px solid black">
+        <h1 style="text-align: center; text-transform: uppercase">
+            {{$data->nm_pekerjaan}}
+        </h1>
     </div>
-    <div class="container mt-2">{!!$dataPerusahaan->embeded_maps!!}</div>
+    <div class="container">
+        @foreach($data->texts as $text)
+        <p class="bottom35">{!!$text->p!!}</p>
+        @endforeach
+    </div>
+    <div class="container d-flex justify-content-between">
+        @foreach($data->imgs as $img)
+        <img
+            src="/semaju/storage/app/{{$img->img_pekerjaan}}"
+            alt="{{$data->nm_pekerjaan}}"
+            class="img-thumbnail"
+            width="35%"
+        />
+        @endforeach
+    </div>
+    <div class="container mt-3">
+        <h3 style="text-align: center">Feature And Benefits</h3>
+        <span
+            style="
+                word-wrap: break-word; /* IE 5.5-7 */
+                white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+                white-space: pre-wrap; /* current browsers */
+            "
+            >{{$data->feature}}</span
+        >
+    </div>
 </section>
 
 @section('script')
+
+<script
+    type="text/javascript"
+    src="{{ asset('assets/js/jquery.zoom.js') }}"
+></script>
 <script>
     $(document).ready(() => {
         $("#bg").addClass("bg-navbar-imp");
+        $("#ex1").zoom();
+        const box = document.getElementById("spec");
+        const text = box.innerText.trim();
+        box.innerHTML = text;
+        const desc = document.getElementById("desc");
+        const aw = box.innerText.trim();
+        desc.innerHTML = aw;
     });
+
+    function responClass(s) {
+        if (s.matches) {
+            $("#contentProduk").addClass("flex-column");
+        } else {
+            $("#contentProduk").removeClass("flex-column");
+        }
+    }
+
+    var s = window.matchMedia("(max-width: 375px)");
+    responClass(s);
+    s.addListener(responClass);
 </script>
 @endsection @endsection

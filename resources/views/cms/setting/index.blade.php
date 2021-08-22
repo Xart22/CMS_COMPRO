@@ -274,6 +274,90 @@
                     <div class="field item form-group">
                         <label
                             class="col-form-label col-md-3 col-sm-3 label-align"
+                            >Start From</label
+                        >
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-floating">
+                                @if(isset($data->start_from))
+                                <input
+                                class="form-control"
+                                name="from"
+                                required
+                                autocomplete="off"
+                                value="{{$data->start_from}}"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                @else
+                                <input
+                                class="form-control"
+                                name="from"
+                                required
+                                autocomplete="off"
+                                value="{{old('start_from')}}"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                @endif
+                            </div>
+                        </div>
+                        <div class="alert">please put something here</div>
+                    </div>
+                    <div class="field item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            >Projects Completed</label
+                        >
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-floating">
+                                @if(isset($data->project))
+                                <input
+                                class="form-control"
+                                name="project"
+                                required
+                                autocomplete="off"
+                                value="{{$data->project}}"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                @else
+                                <input
+                                class="form-control"
+                                name="project"
+                                required
+                                autocomplete="off"
+                                value="{{old('project')}}"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                @endif
+                            </div>
+                        </div>
+                        <div class="alert">please put something here</div>
+                    </div>
+                    <div class="field item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            >Description</label
+                        >
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-floating">
+                                @if( isset($data->text))
+                                <textarea
+                                class="form-control"
+                                name="text"
+                                style="height: 160px"
+                                
+                                >{{$data->text}}</textarea
+                            >
+                                @else
+                                <textarea
+                                class="form-control"
+                                name="text"
+                                style="height: 160px"
+                                
+                               
+                            >{{old('text')}}</textarea>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="alert">please put something here</div>
+                    </div>
+                    <div class="field item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
                             >Small Company Logo</label
                         >
                         @if(Session::get('fail_small'))

@@ -133,6 +133,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="field item form-group">
+                        <label
+                            class="col-form-label col-md-3 col-sm-3 label-align"
+                            >Template Text WhatsApp</label
+                        >
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-floating">
+                                @if( isset($data->linkedin))
+                                <input
+                                class="form-control"
+                                type="text"
+                                name="text_wa"
+                                value="{{$data->text_wa}}"
+                            />
+                                @else
+                                <input
+                                class="form-control"
+                                type="text"
+                                name="text_wa"
+                                required
+                            />
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     <div class="ln_solid">
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3">
