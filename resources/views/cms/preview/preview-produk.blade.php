@@ -174,7 +174,7 @@
             </div>
             <div class="mt-5">
                 <a
-                    href="https://api.whatsapp.com/send?phone=6281319378284&amp;text=Halo%20Semaju,%20Boleh%20kami%20dibantu"
+                    href="https://api.whatsapp.com/send?phone={{$dataPerusahaan->no_wa}}&amp;text=Halo Minta Info untuk Produk {{$data->nm_produk}}"
                 >
                     <button type="button" class="btn btn-success">
                         Click Me To Get More Info
