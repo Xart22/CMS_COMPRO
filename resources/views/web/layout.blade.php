@@ -228,14 +228,12 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="footer_panel padding_bottom_half bottom20">
-                            <a href="index.html" class="footer_logo bottom25"
+                            <a href="{{route('home')}}" class="footer_logo bottom25"
                                 ><img
-                                    src="{{
-                                        asset(
-                                            'assets/images/logo-transparent.png'
-                                        )
+                                    src="/semaju/storage/app/{{
+                                        $dataPerusahaan->logo_small
                                     }}"
-                                    alt="MegaOne"
+                                    alt="{{$dataPerusahaan->nm_perusahaan}}"
                             /></a>
                             <p class="whitecolor bottom25">
                                 {{$dataPerusahaan->alamat}}

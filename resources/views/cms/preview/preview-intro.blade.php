@@ -106,9 +106,9 @@
                     >
                         <div class="image">
                             <img
-                                alt="SEO"
-                                src="{{
-                                    asset('assets/images/awesome-feature.png')
+                                alt="{{$dataPerusahaan->nm_perusahaan}}"
+                                src="/semaju/storage/app/{{
+                                    $dataPerusahahaan->logo_big
                                 }}"
                             />
                         </div>
