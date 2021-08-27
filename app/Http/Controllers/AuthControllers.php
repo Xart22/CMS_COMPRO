@@ -16,7 +16,7 @@ class AuthControllers extends Controller
      */
     public function index()
     {
-        return view('auth.index',['data'=>DataPerusahaanModel::first()]);
+        return view('auth.index', ['data' => DataPerusahaanModel::first()]);
     }
 
     /**
@@ -26,27 +26,23 @@ class AuthControllers extends Controller
      */
     public function create(Request $req)
     {
-        $req->validate([
-            'username'=>'required',
-            'password'=>'required|min:5|max:12'
-        ]);
-        $usr = User::where('name',$req->username)->first();
+        $usr = User::where('name', $req->username)->first();
         if (!$usr) {
-            return back()->with('fail','Wrong username or password');
+            return back()->with('fail', 'Username Atau Password Salah')->withInput();
+        }
+
+        $cek = Hash::check($req->password, $usr->password);
+        if ($cek == true) {
+            $req->session()->put('loggedUser', $usr);
+            // dd(session());
+            date_default_timezone_set('Asia/Jakarta');
+            $date = now();
+            $update = User::find($usr->id);
+            $update->last_login = $date;
+            $update->save();
+            return redirect('cms/');
         } else {
-            $cek = Hash::check($req->password, $usr->password);
-            if($cek){
-                $req->session()->put('loggedUser',$usr);
-               // dd(session());
-               date_default_timezone_set('Asia/Jakarta');
-               $date = now();
-               $update = User::find($usr->id);
-               $update->last_login = $date;
-               $update->save();
-                return redirect('cms/');
-            }else{
-               return back()->with('fail','Wrong username or password');
-            }
+            return back()->with('fail', 'Username Atau Password Salah')->withInput();
         }
     }
 
@@ -103,7 +99,7 @@ class AuthControllers extends Controller
      */
     public function destroy(Request $req)
     {
-        if(session()->has('loggedUser')){
+        if (session()->has('loggedUser')) {
             session()->pull('loggedUser');
             return redirect('/');
         }

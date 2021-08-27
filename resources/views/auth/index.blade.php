@@ -1,79 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Talikuat Bima Jabar</title>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>CMS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--===============================================================================================-->
+        <!--===============================================================================================-->
         <link
             rel="stylesheet"
-            href="{{ asset('assets/css/bootstrap.min.css') }}"
+            type="text/css"
+            href="{{
+                asset('assets/login/vendor/bootstrap/css/bootstrap.min.css')
+            }}"
         />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{
+                asset(
+                    'assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
+                )
+            }}"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/login/vendor/animate/animate.css') }}"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{
+                asset('assets/login/vendor/css-hamburgers/hamburgers.min.css')
+            }}"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/login/vendor/select2/select2.min.css') }}"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/login/vendor/util.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/login/vendor/main.css') }}"
+        />
+        <!--===============================================================================================-->
     </head>
-    <body style="background-color: #dedede">
-        <div class="d-flex justify-content-center">
-            <div class="container-box mt-5">
-                <div class="container">
-                    @if($data)
-                    <img
-                        src="/semaju/storage/app/{{ $data->logo_small }}"
-                        alt=""
-                    />
-                    @endif
-                </div>
-                <form action="{{ route('auth_login') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label"
-                            >Username</label
-                        >
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="username"
-                            placeholder="Username"
-                            value="{{ old('username') }}"
+    <body>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <div class="login100-pic js-tilt" data-tilt>
+                        <img
+                            src="/semaju/storage/app/{{
+                            $data->logo_big
+                        }}"
+                            alt="{{$data->nm_perusahaan}}"
                         />
-                        <span class="text-danger"
-                            >@error('username'){{ $message }}@enderror</span
-                        >
                     </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label"
-                            >Password</label
+                    <div class="login-form">
+                        <form
+                            class="login100-form validate-form"
+                            action="{{ route('auth_login') }}"
+                            method="POST"
                         >
-                        <input
-                            type="password"
-                            class="form-control"
-                            name="password"
-                            placeholder="Password"
-                            value="{{ old('password') }}"
-                        />
-                        <span class="text-danger"
-                            >@error('password'){{ $message }}@enderror</span
-                        >
-                    </div>
-                    @if(Session::get('fail'))
-                    <div class="p-3 mb-2 bg-danger text-white">
-                        {{ Session::get('fail') }}
-                    </div>
-                    @endif
+                            @csrf
+                            <span
+                                class="login100-form-title"
+                                style="color: white"
+                            >
+                                {{$data->nm_perusahaan}}
+                            </span>
+                            <div
+                                class="wrap-input100 validate-input"
+                                data-validate="Username Tidak Boleh Kosong"
+                            >
+                                <input
+                                    class="input100"
+                                    type="text"
+                                    name="username"
+                                    placeholder="Username"
+                                    value="{{ old('username') }}"
+                                />
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i
+                                        class="fa fa-id-card"
+                                        aria-hidden="true"
+                                    ></i>
+                                </span>
+                            </div>
 
-                    <button
-                        type="submit"
-                        class="btn btn-block mb-3 text-white"
-                        style="background-color: #21cc4e"
-                    >
-                        Login
-                    </button>
-                </form>
+                            <div
+                                class="wrap-input100 validate-input"
+                                data-validate="Password Tidak Boleh Kosong"
+                            >
+                                <input
+                                    class="input100"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                />
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i
+                                        class="fa fa-lock"
+                                        aria-hidden="true"
+                                    ></i>
+                                </span>
+                            </div>
+                            @if(Session::get('fail'))
+                            <div class="container-login100-form-btn">
+                                <div class="container bg-danger">
+                                    <span>{{Session::get('fail')}}</span>
+                                </div>
+                            </div>
+                            @endif
+                            <div class="container-login100-form-btn">
+                                <button
+                                    class="login100-form-btn"
+                                    type="submit"
+                                    name="submit"
+                                >
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
-        <!--Bootstrap Core-->
-        <script src="{{ asset('assets/js/propper.min.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+        <!--===============================================================================================-->
+        <script src="{{
+                asset('assets/login/vendor/jquery/jquery-3.2.1.min.js')
+            }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{
+                asset('assets/login/vendor/bootstrap/js/popper.js')
+            }}"></script>
+        <script src="{{
+                asset('assets/login/vendor/bootstrap/js/bootstrap.min.js')
+            }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{
+                asset('assets/login/vendor/select2/select2.min.js')
+            }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{
+                asset('assets/login/vendor/tilt/tilt.jquery.min.js')
+            }}"></script>
+        <script>
+            $(".js-tilt").tilt({
+                scale: 1.1,
+            });
+        </script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('/js/main.js') }}"></script>
     </body>
 </html>
