@@ -108,7 +108,7 @@
                             <img
                                 alt="{{$dataPerusahaan->nm_perusahaan}}"
                                 src="/semaju/storage/app/{{
-                                    $dataPerusahahaan->logo_big
+                                    $dataPerusahaan->logo_big
                                 }}"
                             />
                         </div>

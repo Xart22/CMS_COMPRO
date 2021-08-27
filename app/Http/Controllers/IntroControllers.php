@@ -58,7 +58,7 @@ class IntroControllers extends Controller
      */
     public function show()
     {   
-        return view('cms.preview.preview-intro',['data'=>IntroModel::first()]);
+        return view('cms.preview.preview-intro',['data'=>IntroModel::first(),'dataPerusahaan'=>DataPerusahaanModel::first()]);
     }
 
     /**
