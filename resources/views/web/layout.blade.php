@@ -7,8 +7,8 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="icon" type="image/jpg" href="/semaju/storage/app/{{ $dataPerusahaan->logo_small}}"/>
         <title>{{$dataPerusahaan->nm_perusahaan}} | @yield('title')</title>
-        <link href="{{ asset('assets/images/favicon.ico') }}" rel="icon" />
         <link
             rel="stylesheet"
             href="{{ asset('assets/css/bootstrap.min.css') }}"
@@ -68,12 +68,12 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home') }}">
                         <img
-                            src="https://www.alurgerak.id/semaju/storage/app/{{ $dataPerusahaan->logo_small}}"
+                            src="/semaju/storage/app/{{ $dataPerusahaan->logo_small}}"
                             alt="logo"
                             class="logo-default"
                         />
                         <img
-                            src="https://www.alurgerak.id/semaju/storage/app/{{ $dataPerusahaan->logo_big}}"
+                            src="/semaju/storage/app/{{ $dataPerusahaan->logo_big}}"
                             alt="logo"
                             class="logo-scrolled"
                         />
@@ -212,7 +212,7 @@
                             </li>
                         </ul>
                         <p class="whitecolor">
-                            <a href="https://www.alurgerak.id/"> www.alurgerak.id</a>
+                            <a href="/"> www.alurgerak.id</a>
                         </p>
                     </div>
                 </div>
